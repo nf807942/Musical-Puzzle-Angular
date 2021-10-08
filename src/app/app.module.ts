@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // Material Component Modules
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 // Custom Component
 import { HomeComponent } from './home/home.component';
@@ -38,7 +39,8 @@ import { ToolbarComponent } from './commons/toolbar/toolbar.component';
 
     // Material Component Modules
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

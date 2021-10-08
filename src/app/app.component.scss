@@ -2,9 +2,11 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    //justify-content: space-between;
 }
 
 .content-container {
     flex: 1;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 100%;
 }
