@@ -2,3 +2,20 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.logo-toolbar {
+    height: inherit;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.neutral-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.center-content {
+    height: 100%;
+}
