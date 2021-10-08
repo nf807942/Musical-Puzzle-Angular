@@ -1,0 +1,28 @@
+.buttons-group {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: center;
+    margin-bottom: 2em;
+    
+    button {
+        width: 50%;
+        min-width: 200px;
+    }
+}
+
+video {
+    width: 100%;
+    max-height: 60vh;
+}
+
+@media (max-width: 800px) {
+    .buttons-group {
+        flex-direction: column;
+        gap: 1em;
+
+        button {
+            width: 100%;
+        }
+    }
+}
