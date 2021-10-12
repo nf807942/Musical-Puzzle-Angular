@@ -4,7 +4,7 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Adresse email</mat-label>
-        <input matInput placeholder="exemple@web.fr" required formControlName="email">
+        <input matInput type="email" placeholder="exemple@web.fr" required formControlName="email">
         <mat-icon matSuffix>email</mat-icon>
         <mat-error *ngIf="form.controls['email'].errors?.required">Ce champ est requis</mat-error>
         <mat-error *ngIf="form.controls['email'].errors?.email">L'adresse mail n'est pas valide</mat-error>
@@ -45,14 +45,13 @@
 
     <mat-form-field appearance="fill" *ngIf="form.controls['experience']?.value != 0">
         <mat-label>De quelle manière avez-vous appris la musique ?</mat-label>
-        <mat-select required formControlName="apprentissage">
+        <mat-select formControlName="apprentissage">
             <mat-option value="0">Autodidacte</mat-option>
             <mat-option value="1">Professeur particulier</mat-option>
             <mat-option value="2">École de musique</mat-option>
             <mat-option value="3">Conservatoire</mat-option>
         </mat-select>
         <mat-icon matSuffix>school</mat-icon>
-        <mat-error *ngIf="form.controls['apprentissage'].errors?.required">Ce champ est requis</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" *ngIf="form.controls['experience']?.value != 0">
@@ -69,7 +68,7 @@
     
     <div class="buttons-group">
         <button mat-raised-button routerLink="/">Retour</button>
-        <button mat-raised-button color="primary">Valider</button>
+        <button mat-raised-button color="primary" [disabled]="!form.valid">Valider</button>
     </div>
 
 </ng-container>

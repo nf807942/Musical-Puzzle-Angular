@@ -20,9 +20,9 @@ export class FormComponent implements OnInit {
       age: this.fb.control('', {validators:[Validators.required, Validators.min(2), Validators.max(100)]}),
       statut: this.fb.control('', {validators:[Validators.required]}),
       experience: this.fb.control('', {validators:[Validators.required]}),
-      apprentissage: this.fb.control('', {validators:[Validators.required]}),
-      instruments: this.fb.control('', {validators:[Validators.required]}),
-      pratique: this.fb.control('', {validators:[Validators.required]}),
+      apprentissage: this.fb.control(''),
+      instruments: this.fb.control(''),
+      pratique: this.fb.control(''),
     })
   }
 
