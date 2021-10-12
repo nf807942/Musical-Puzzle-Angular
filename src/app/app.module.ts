@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 // Material Component Modules
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -44,6 +45,7 @@ import { FormComponent } from './form/form.component';
     FlexLayoutModule,
     FormsModule, 
     ReactiveFormsModule,
+    DragDropModule,
 
     // Material Component Modules
     MatToolbarModule,

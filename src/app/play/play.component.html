@@ -1,1 +1,43 @@
-<p>play works!</p>
+<div class="puzzle" cdkDropListGroup> 
+	<ng-container *ngFor="let instrument of puzzle; let j = index">
+        <ng-container *ngIf="j == nb_instruments">
+            <div class="separator-row title-row">
+                Réponse :
+            </div>
+        </ng-container>
+        <ng-container *ngIf="j == 0">
+            <div class="title-row">
+                Pièces disponibles :
+            </div>
+        </ng-container>
+        <div class="puzzle-row">
+            <span>Instrument {{1 + j % nb_instruments}} :</span>
+            <ng-container *ngFor="let piece of instrument; let i = index">
+                <div class="piece-container" cdkDropList 
+                    cdkDropListOrientation="horizontal"
+                    [cdkDropListData]="{item:piece, instrument:j, order:i}" 
+                    [cdkDropListEnterPredicate]="rightPartitionPredicate"
+                    (cdkDropListDropped)="drop($event)"
+                    [style.backgroundColor]="colors[j % nb_instruments]">
+
+                    <div class="space movable" cdkDrag *ngIf="!piece.empty" [style.backgroundColor]="colors[j % nb_instruments]">
+                        <div *cdkDragPlaceholder></div>
+                        <ng-container *ngIf="!piece.empty">
+                            <button (click)="play(piece)" mat-mini-fab color="primary">
+                                <mat-icon *ngIf="!piece.playing">play_arrow</mat-icon>
+                                <mat-icon *ngIf="piece.playing">pause</mat-icon>
+                            </button>
+                        </ng-container>
+                    </div>
+                    <div class="space" cdkDrag *ngIf="piece.empty" cdkDragDisabled=true >
+                        <div *cdkDragPlaceholder></div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+	</ng-container>
+</div>
+
+<div class="validation-button">
+    <button mat-raised-button color="primary" [disabled]="!puzzle_complete()">Valider {{corrects_pieces()}} / {{nb_pieces * this.nb_instruments}}</button>
+</div>

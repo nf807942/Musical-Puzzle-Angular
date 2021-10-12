@@ -11,6 +11,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     cursor: pointer;
 }
 
+.movable {
+    cursor: move;
+}
+
 .neutral-link {
     color: inherit;
     text-decoration: none;
