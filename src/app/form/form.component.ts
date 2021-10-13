@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AppConfigService } from '../app-config.service';
 
 @Component({
   selector: 'app-form',
@@ -24,6 +25,13 @@ export class FormComponent implements OnInit {
       instruments: this.fb.control(''),
       pratique: this.fb.control(''),
     })
+  }
+
+  next_page(): string {
+    if (AppConfigService.settings.difficulty.ask_for_difficulty) {
+      return '/difficulty';
+    }
+    return '/play';
   }
 
 }

@@ -68,7 +68,7 @@
     
     <div class="buttons-group-back-next">
         <button mat-raised-button routerLink="/">Retour</button>
-        <button mat-raised-button routerLink="/difficulty" color="primary" [disabled]="!form.valid">Valider</button>
+        <button mat-raised-button [routerLink]="next_page()" color="primary" [disabled]="!form.valid">Valider</button>
     </div>
 
 </ng-container>

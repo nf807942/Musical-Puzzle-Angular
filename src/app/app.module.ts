@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HttpClientModule } from '@angular/common/http';
 
 // Material Component Modules
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -16,8 +16,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
- 
-// Custom Component
+
+// Custom Components
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { TrainingComponent } from './training/training.component';
@@ -27,6 +27,14 @@ import { FooterComponent } from './commons/footer/footer.component';
 import { ToolbarComponent } from './commons/toolbar/toolbar.component';
 import { FormComponent } from './form/form.component';
 import { DifficultyComponent } from './difficulty/difficulty.component';
+
+// Custom Services
+import { AppConfigService } from './app-config.service';
+
+// Initialize the app by loading the config file
+export function initializeApp(appConfig: AppConfigService) {
+  return () => appConfig.load();
+}
 
 @NgModule({
   declarations: [
@@ -49,6 +57,7 @@ import { DifficultyComponent } from './difficulty/difficulty.component';
     FormsModule, 
     ReactiveFormsModule,
     DragDropModule,
+    HttpClientModule,
 
     // Material Component Modules
     MatToolbarModule,
@@ -59,7 +68,15 @@ import { DifficultyComponent } from './difficulty/difficulty.component';
     MatSelectModule,
     MatRadioModule,
   ],
-  providers: [],
+  providers: [
+    AppConfigService,
+       {
+         provide: APP_INITIALIZER,
+         useFactory: initializeApp,
+         deps: [AppConfigService], 
+         multi: true
+       }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,11 @@
+{
+    "difficulty": {
+        "ask_for_difficulty": true,
+
+        "default_instruments": 1,
+        "default_pieces": 5,
+
+        "available_instruments": [1, 2, 4],
+        "available_pieces": [5, 10]
+    }
+}

@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {CdkDrag, CdkDragDrop, CdkDropList} from '@angular/cdk/drag-drop';
 import { Piece } from '../models/piece';
+import { AppConfigService } from '../app-config.service';
 
 @Component({
   selector: 'app-play',
@@ -10,8 +11,8 @@ import { Piece } from '../models/piece';
 })
 export class PlayComponent implements OnInit, OnDestroy {
 
-  nb_pieces = 5;
-  nb_instruments = 1;
+  nb_pieces = AppConfigService.settings.difficulty.default_pieces;
+  nb_instruments = AppConfigService.settings.difficulty.default_instruments;
   colors: Array<string> = ['aliceblue','antiquewhite','burlywood','darkkhaki']
 
   puzzle: Array<Array<Piece>> = [];
