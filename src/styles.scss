@@ -39,3 +39,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-left: 10%;
     padding-right: 10%;
 }
+
+.buttons-group-back-next {
+    padding-left: 10%;
+    padding-right: 10%;
+    
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: center;
+    
+    button {
+        flex: 1;
+    }
+}
+
+@media (max-width: 800px) {
+    .buttons-group-back-next {
+        flex-direction: column;
+        gap: 1em;
+
+        button {
+            width: 100%;
+        }
+    }
+}

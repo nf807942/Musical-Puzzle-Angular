@@ -1,5 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CdkDrag, CdkDragDrop, CdkDropList} from '@angular/cdk/drag-drop';
 import { Piece } from '../models/piece';
 
 @Component({
@@ -22,7 +23,17 @@ export class PlayComponent implements OnInit, OnDestroy {
     return drop.data.item.instrument % this.nb_instruments === item.dropContainer.data.item.instrument;
   }
 
-  constructor() { }
+  constructor(
+    private location:Location) { 
+
+      const state: any = location.getState();
+      
+      if(state?.nb_instruments) {
+        this.nb_instruments = state.nb_instruments;
+        this.nb_pieces = state.nb_pieces;
+      }
+
+  }
 
   ngOnInit(): void {
 

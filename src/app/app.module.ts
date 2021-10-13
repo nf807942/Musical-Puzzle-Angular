@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
  
 // Custom Component
 import { HomeComponent } from './home/home.component';
@@ -25,6 +26,7 @@ import { PrincipeComponent } from './principe/principe.component';
 import { FooterComponent } from './commons/footer/footer.component';
 import { ToolbarComponent } from './commons/toolbar/toolbar.component';
 import { FormComponent } from './form/form.component';
+import { DifficultyComponent } from './difficulty/difficulty.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { FormComponent } from './form/form.component';
     PrincipeComponent,
     FooterComponent,
     ToolbarComponent,
-    FormComponent
+    FormComponent,
+    DifficultyComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { FormComponent } from './form/form.component';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

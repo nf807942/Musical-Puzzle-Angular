@@ -9,7 +9,6 @@
     align-items: center;
     span {
         font-size: large;
-        margin-right: 1em;
     }
 }
 
@@ -61,6 +60,7 @@
 .validation-button {
     text-align: center;
     margin-top: 2em;
+    margin-bottom: 1em;
     button {
         width: 20%;
     }
