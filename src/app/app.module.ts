@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 
 // Custom Components
 import { HomeComponent } from './home/home.component';
@@ -30,6 +31,7 @@ import { DifficultyComponent } from './difficulty/difficulty.component';
 
 // Custom Services
 import { AppConfigService } from './app-config.service';
+import { ResultDialogComponent } from './commons/dialogs/result-dialog/result-dialog.component';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
@@ -47,7 +49,8 @@ export function initializeApp(appConfig: AppConfigService) {
     FooterComponent,
     ToolbarComponent,
     FormComponent,
-    DifficultyComponent
+    DifficultyComponent,
+    ResultDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ export function initializeApp(appConfig: AppConfigService) {
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatDialogModule,
   ],
   providers: [
     AppConfigService,

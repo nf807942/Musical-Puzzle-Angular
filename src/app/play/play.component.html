@@ -39,5 +39,8 @@
 </div>
 
 <div class="validation-button">
-    <button mat-raised-button color="primary" [disabled]="!puzzle_complete()">Valider {{corrects_pieces()}} / {{nb_pieces * this.nb_instruments}}</button>
+    <button mat-raised-button color="primary" [disabled]="!puzzle_complete()" (click)="openResultDialog()">
+        <mat-icon>done</mat-icon>
+        Valider
+    </button>
 </div>

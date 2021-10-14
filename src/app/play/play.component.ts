@@ -3,6 +3,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {CdkDrag, CdkDragDrop, CdkDropList} from '@angular/cdk/drag-drop';
 import { Piece } from '../models/piece';
 import { AppConfigService } from '../app-config.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ResultDialogComponent, ResultDialogOutputData } from '../commons/dialogs/result-dialog/result-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-play',
@@ -15,7 +18,7 @@ export class PlayComponent implements OnInit, OnDestroy {
   nb_instruments = AppConfigService.settings.difficulty.default_instruments;
   colors: Array<string> = ['aliceblue','antiquewhite','burlywood','darkkhaki']
 
-  puzzle: Array<Array<Piece>> = [];
+  puzzle: Array<Array<Piece>>;
 
   audio = new Audio();
   playing_piece: Piece = null;
@@ -25,7 +28,9 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private location:Location) { 
+    public dialog: MatDialog,
+    private location: Location,
+    private router: Router) { 
 
       const state: any = location.getState();
       
@@ -38,16 +43,7 @@ export class PlayComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    /**
-     * Construction du puzzle
-     */
-    for (let j = 0; j < this.nb_instruments * 2; j++) {
-      this.puzzle.push([]);
-      for (let i = 0; i < this.nb_pieces; i++) {
-        this.puzzle[j].push(new Piece(j, i, j >= this.nb_instruments, false));
-        this.puzzle[j] = this.shuffle(this.puzzle[j]);
-      }
-    }
+    this.initPuzzle();
 
     this.audio.src = "assets/audios/satisfaction.wav";
     this.audio.load();
@@ -78,6 +74,20 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Construction du puzzle
+   */
+  initPuzzle(): void {
+    this.puzzle = [];
+    for (let j = 0; j < this.nb_instruments * 2; j++) {
+      this.puzzle.push([]);
+      for (let i = 0; i < this.nb_pieces; i++) {
+        this.puzzle[j].push(new Piece(j, i, j >= this.nb_instruments, false));
+        this.puzzle[j] = this.shuffle(this.puzzle[j]);
+      }
+    }
+  }
+
+  /**
    * échange l'emplacement des pièces lors d'un drag and drop
    * @param event 
    */
@@ -98,7 +108,7 @@ export class PlayComponent implements OnInit, OnDestroy {
       this.play_at_position(piece);
     } else {
       if (piece === this.playing_piece) {
-        piece.playing = false;
+        this.playing_piece.playing = false;
         this.playing_piece = null;
         this.audio.pause();
       } else {
@@ -152,9 +162,27 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * 
+   * @returns le nombre de piece correctement positionnées par ligne
+   */
+     corrects_pieces_by_row(): number[] {
+      let corrects_pieces_by_row = [];
+      for (let j = this.nb_instruments; j < this.nb_instruments*2; j++) {
+        let corrects_pieces = 0;
+        for (let i = 0; i < this.nb_pieces; i++) {
+          if(this.puzzle[j][i].order === i && !this.puzzle[j][i].empty) {
+            corrects_pieces += 1;
+          }
+        }
+        corrects_pieces_by_row.push(corrects_pieces);
+      }
+      return corrects_pieces_by_row;
+    }
+
+  /**
    * Fisher-Yates shuffle
    * @param array
-   * @returns 
+   * @returns array randomisé
    */
   shuffle(array: any[]): any[] {
     for (let i = array.length - 1; i > 0; i--) {
@@ -162,6 +190,38 @@ export class PlayComponent implements OnInit, OnDestroy {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  }
+
+  /**
+   * Ouvre la fenêtre de récapitulatif
+   */
+  openResultDialog(): void {
+    if (this.playing_piece) {
+      this.playing_piece.playing = false;
+      this.playing_piece = null;
+      this.audio.pause();
+    }
+
+    const dialogRef = this.dialog.open(ResultDialogComponent, 
+      {
+        disableClose: true,
+        data: {
+          duration: 5,
+          pieces: this.nb_pieces,
+          success_by_row: this.corrects_pieces_by_row(),
+          success_total: this.corrects_pieces()
+        }
+      });
+
+    dialogRef.afterClosed().subscribe((result:ResultDialogOutputData) => {
+      if (result === ResultDialogOutputData.difficulty) {
+        this.router.navigate(['/difficulty']);
+      } else if (result === ResultDialogOutputData.quit) {
+        this.router.navigate(['/']);
+      } else if (result === ResultDialogOutputData.retry) {
+        this.initPuzzle();
+      }
+    });
   }
 }
 

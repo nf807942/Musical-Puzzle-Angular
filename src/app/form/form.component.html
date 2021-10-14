@@ -67,8 +67,8 @@
     </mat-form-field>
     
     <div class="buttons-group-back-next">
-        <button mat-raised-button routerLink="/">Retour</button>
-        <button mat-raised-button [routerLink]="next_page()" color="primary" [disabled]="!form.valid">Valider</button>
+        <button mat-raised-button routerLink="/"><mat-icon>arrow_back</mat-icon>Retour</button>
+        <button mat-raised-button [routerLink]="next_page()" color="primary" [disabled]="!form.valid"><mat-icon>done</mat-icon>Valider</button>
     </div>
 
 </ng-container>

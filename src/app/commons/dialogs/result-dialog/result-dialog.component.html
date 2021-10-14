@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Récapitulatif</h2>
+<mat-dialog-content>
+    <ng-container *ngIf="data.success_by_row.length != 1">
+        <p>Bonnes réponses :</p>
+        <ul>
+            <li *ngFor="let success of data.success_by_row let i = index">
+                <span>instrument {{i + 1}} : {{success}} / {{data.pieces}}</span>
+            </li>
+            <li>
+                <span>total : {{data.success_total}} / {{data.pieces * data.success_by_row.length}}</span>
+            </li>
+        </ul>
+    </ng-container>
+    <ng-container *ngIf="data.success_by_row.length == 1">
+        <p>Bonnes réponses : {{data.success_total}} / {{data.pieces}}</p>
+    </ng-container>
+    <p>Temps : {{data.duration}} secondes</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="resultDialogData.quit"><mat-icon>close</mat-icon>Quitter</button>
+  <button mat-raised-button [mat-dialog-close]="resultDialogData.difficulty"><mat-icon>settings</mat-icon>Changer la difficulté</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="resultDialogData.retry" cdkFocusInitial><mat-icon>replay</mat-icon>Réesayer</button>
+</mat-dialog-actions>

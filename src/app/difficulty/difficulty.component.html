@@ -21,13 +21,15 @@
     </div>
     
     <div class="buttons-group-back-next">
-        <button mat-raised-button routerLink="/form">Retour</button>
+        <button mat-raised-button routerLink="/form"><mat-icon>arrow_back</mat-icon>Retour</button>
         <button mat-raised-button routerLink="/play" color="primary" [disabled]="!form.valid"
                 [state]="{
                     nb_instruments: this.form.get('nb_instruments').value, 
                     nb_pieces: this.form.get('nb_pieces').value
                 }"
-        >Valider</button>
+        >
+        <mat-icon>done</mat-icon>
+        Valider</button>
     </div>
 
 </ng-container>
