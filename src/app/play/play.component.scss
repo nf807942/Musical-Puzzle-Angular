@@ -51,6 +51,18 @@
     font-weight: bold;
 }
 
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    mat-slider {
+        flex: 1;
+    }
+    span {
+        font-size: large;
+        white-space: nowrap;
+    }
 }
 
 .validation-button {

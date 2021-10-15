@@ -18,6 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSliderModule} from '@angular/material/slider';
 
 // Custom Components
 import { HomeComponent } from './home/home.component';
@@ -73,6 +74,7 @@ export function initializeApp(appConfig: AppConfigService) {
     MatRadioModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatSliderModule,
   ],
   providers: [
     AppConfigService,

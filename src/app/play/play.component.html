@@ -39,6 +39,19 @@
 	</ng-container>
 </div>
 
+<div class="slider-container" *ngIf="available_solution">
+    <button mat-mini-fab color="primary" (click)="play_solution()">
+        <mat-icon *ngIf="audio_solution.paused">play_arrow</mat-icon>
+        <mat-icon *ngIf="!audio_solution.paused">pause</mat-icon>
+    </button>
+    <span>Réference : </span>
+    <mat-slider 
+    [min]="0" [max]="audio_solution.duration" 
+    [value]="audio_solution_position"
+    (input)="audio_solution.currentTime = $event.value"
+    ></mat-slider>
+</div>
+
 <div class="validation-button">
     <button mat-raised-button color="primary" [disabled]="!puzzle_complete()" (click)="openResultDialog()">
         <mat-icon>done</mat-icon>

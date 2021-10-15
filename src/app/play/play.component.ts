@@ -25,6 +25,8 @@ export class PlayComponent implements OnInit, OnDestroy {
 
   audio = new Audio();
   playing_piece: Piece = null;
+  audio_solution = new Audio();
+  audio_solution_position: number = 0;
 
   rightPartitionPredicate = (item: CdkDrag<Piece>, drop?: CdkDropList<{item:Piece}>) => {
     return drop.data.item.instrument % this.nb_instruments === item.dropContainer.data.item.instrument;
@@ -54,6 +56,8 @@ export class PlayComponent implements OnInit, OnDestroy {
 
     this.audio.src = "assets/audios/satisfaction.wav";
     this.audio.load();
+    this.audio_solution.src = "assets/audios/satisfaction.wav";
+    this.audio_solution.load();
 
     /**
      * On change les icones quand la musique arrive à sa fin
@@ -74,10 +78,18 @@ export class PlayComponent implements OnInit, OnDestroy {
         }   
       }
     }
+
+    /**
+     * On update la position du slider de la solution à chaque instant
+     */
+    this.audio_solution.ontimeupdate = () => {
+      this.audio_solution_position = this.audio_solution.currentTime
+    }
   }
 
   ngOnDestroy(): void {
     this.audio.pause();
+    this.audio_solution.pause();
   }
 
   /**
@@ -136,6 +148,19 @@ export class PlayComponent implements OnInit, OnDestroy {
         piece.playing = true;
         this.play_at_position(piece);
       }
+    }
+  }
+
+  /**
+   * lance / met en pause la musique solution
+   * 
+   */
+   play_solution(): void {
+    
+    if (this.audio_solution.paused) {
+      this.audio_solution.play();
+    } else {
+      this.audio_solution.pause();
     }
   }
 
