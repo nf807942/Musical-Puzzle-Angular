@@ -20,14 +20,11 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Statut professionnel actuel</mat-label>
-        <mat-select required formControlName="statut">
-            <mat-option value="0">Étudiant</mat-option>
-            <mat-option value="0">Actif</mat-option>
-            <mat-option value="2">Retaité</mat-option>
-            <mat-option value="3">Sans emploi</mat-option>
+        <mat-select required formControlName="status">
+            <mat-option *ngFor="let option of config.form.status" [value]="option.id">{{option.label}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>work</mat-icon>
-        <mat-error *ngIf="form.controls['statut'].errors?.required">Ce champ est requis</mat-error>
+        <mat-error *ngIf="form.controls['status'].errors?.required">Ce champ est requis</mat-error>
     </mat-form-field>
 
     <div class="title"><span>Expérience musicale</span></div>
@@ -35,9 +32,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Expérience musicale</mat-label>
         <mat-select required formControlName="experience">
-            <mat-option value="0">Aucune expérience</mat-option>
-            <mat-option value="1">Amateur</mat-option>
-            <mat-option value="2">Professionnel</mat-option>
+            <mat-option *ngFor="let option of config.form.musical_experience" [value]="option.id">{{option.label}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>music_note</mat-icon>
         <mat-error *ngIf="form.controls['experience'].errors?.required">Ce champ est requis</mat-error>
@@ -45,11 +40,8 @@
 
     <mat-form-field appearance="fill" *ngIf="form.controls['experience']?.value != 0">
         <mat-label>De quelle manière avez-vous appris la musique ?</mat-label>
-        <mat-select formControlName="apprentissage">
-            <mat-option value="0">Autodidacte</mat-option>
-            <mat-option value="1">Professeur particulier</mat-option>
-            <mat-option value="2">École de musique</mat-option>
-            <mat-option value="3">Conservatoire</mat-option>
+        <mat-select formControlName="learning">
+            <mat-option *ngFor="let option of config.form.musical_learning" [value]="option.id">{{option.label}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>school</mat-icon>
     </mat-form-field>
@@ -62,13 +54,15 @@
 
     <mat-form-field appearance="fill" *ngIf="form.controls['experience']?.value != 0">
         <mat-label>Combien de temps avez vous pratiqué ?</mat-label>
-        <input matInput type="number" min="0" max="100" formControlName="pratique">
+        <input matInput type="number" min="0" max="100" formControlName="practice">
         <mat-icon matSuffix>hourglass_empty</mat-icon>
     </mat-form-field>
     
     <div class="buttons-group-back-next">
         <button mat-raised-button routerLink="/"><mat-icon>arrow_back</mat-icon>Retour</button>
-        <button mat-raised-button [routerLink]="next_page()" color="primary" [disabled]="!form.valid"><mat-icon>done</mat-icon>Valider</button>
+        <button mat-raised-button [routerLink]="next_page()" [state]="{training:false, form:form.value}" color="primary" [disabled]="!form.valid">
+            <mat-icon>done</mat-icon>Valider
+        </button>
     </div>
 
 </ng-container>

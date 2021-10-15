@@ -18,6 +18,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button [mat-dialog-close]="resultDialogData.quit"><mat-icon>close</mat-icon>Quitter</button>
-  <button mat-raised-button [mat-dialog-close]="resultDialogData.difficulty"><mat-icon>settings</mat-icon>Changer la difficulté</button>
+  <button *ngIf="data.can_change_difficulty" mat-raised-button [mat-dialog-close]="resultDialogData.difficulty"><mat-icon>settings</mat-icon>Changer la difficulté</button>
   <button mat-raised-button color="primary" [mat-dialog-close]="resultDialogData.retry" cdkFocusInitial><mat-icon>replay</mat-icon>Réesayer</button>
 </mat-dialog-actions>

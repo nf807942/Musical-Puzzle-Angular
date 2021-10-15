@@ -15,6 +15,8 @@ const routes: Routes = [
   { path: 'principe', component: PrincipeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'play', component: PlayComponent },
+  { path: 'training', component: PlayComponent},
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

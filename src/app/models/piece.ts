@@ -3,11 +3,21 @@ export class Piece {
     order: number = 0;
     empty: boolean = false;
     playing: boolean = false;
+    index: number = 0;
 
-    constructor(_instrument: number, _order: number, _empty: boolean, _playing: boolean) {
+    /**
+     * 
+     * @param _instrument numéro de la piste instrument (0..n)
+     * @param _order emplacement correct de la pièce (0..n)
+     * @param _empty cellule vide ou non
+     * @param _playing pièce en cours de lecture ou non
+     * @param _index emplacement initial de la pièce (0..n)
+     */
+    constructor(_instrument: number, _order: number, _empty: boolean, _playing: boolean, _index: number) {
         this.instrument = _instrument;
         this.order = _order
         this.empty = _empty;
         this.playing = _playing;
+        this.index = _index
     }
 }

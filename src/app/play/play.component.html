@@ -23,6 +23,7 @@
                     <div class="space movable" cdkDrag *ngIf="!piece.empty" [style.backgroundColor]="colors[j % nb_instruments]">
                         <div *cdkDragPlaceholder></div>
                         <ng-container *ngIf="!piece.empty">
+                            <div class="piece-index">{{getIndex(piece)}}</div>
                             <button (click)="play(piece)" mat-mini-fab color="primary">
                                 <mat-icon *ngIf="!piece.playing">play_arrow</mat-icon>
                                 <mat-icon *ngIf="piece.playing">pause</mat-icon>

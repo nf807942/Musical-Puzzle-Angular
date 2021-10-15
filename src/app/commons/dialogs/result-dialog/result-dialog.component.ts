@@ -12,6 +12,8 @@ export interface ResultDialogInputData {
   success_total: number[];
   pieces: number;
   duration: number;
+  
+  can_change_difficulty: boolean
 }
 
 @Component({

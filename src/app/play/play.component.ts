@@ -14,8 +14,11 @@ import { Router } from '@angular/router';
 })
 export class PlayComponent implements OnInit, OnDestroy {
 
+  state: any;
+
   nb_pieces = AppConfigService.settings.difficulty.default_pieces;
   nb_instruments = AppConfigService.settings.difficulty.default_instruments;
+  available_solution = AppConfigService.settings.difficulty.default_available_solution;
   colors: Array<string> = ['aliceblue','antiquewhite','burlywood','darkkhaki']
 
   puzzle: Array<Array<Piece>>;
@@ -32,13 +35,17 @@ export class PlayComponent implements OnInit, OnDestroy {
     private location: Location,
     private router: Router) { 
 
-      const state: any = location.getState();
+      this.state = location.getState();
       
-      if(state?.nb_instruments) {
-        this.nb_instruments = state.nb_instruments;
-        this.nb_pieces = state.nb_pieces;
+      if(!this.state.training && (!this.state.form || !this.state.difficulty)) {
+        this.router.navigate(["/"]);
       }
 
+      if(this.state.difficulty) {
+        this.nb_instruments = this.state.difficulty.nb_instruments;
+        this.nb_pieces = this.state.difficulty.nb_pieces;
+        this.available_solution = this.state.difficulty.available_solution
+      }
   }
 
   ngOnInit(): void {
@@ -78,13 +85,25 @@ export class PlayComponent implements OnInit, OnDestroy {
    */
   initPuzzle(): void {
     this.puzzle = [];
+    // pour chaque instrument (row)
     for (let j = 0; j < this.nb_instruments * 2; j++) {
       this.puzzle.push([]);
+      // pour chaque emplacement
       for (let i = 0; i < this.nb_pieces; i++) {
-        this.puzzle[j].push(new Piece(j, i, j >= this.nb_instruments, false));
-        this.puzzle[j] = this.shuffle(this.puzzle[j]);
+        // ajout de la pièce
+        this.puzzle[j].push(new Piece(j, i, j >= this.nb_instruments, false, 0));
+      }
+      // mélange du puzzle
+      this.puzzle[j] = this.shuffle(this.puzzle[j]);
+      // ajout des index des emplacements initiaux
+      for (let i = 0; i < this.nb_pieces; i++) {
+        this.puzzle[j][i].index = i;
       }
     }
+  }
+
+  getIndex(piece: Piece): string {
+    return String.fromCharCode('a'.charCodeAt(0) + piece.index);
   }
 
   /**
@@ -209,13 +228,14 @@ export class PlayComponent implements OnInit, OnDestroy {
           duration: 5,
           pieces: this.nb_pieces,
           success_by_row: this.corrects_pieces_by_row(),
-          success_total: this.corrects_pieces()
+          success_total: this.corrects_pieces(),
+          can_change_difficulty: !this.state.training
         }
       });
 
     dialogRef.afterClosed().subscribe((result:ResultDialogOutputData) => {
       if (result === ResultDialogOutputData.difficulty) {
-        this.router.navigate(['/difficulty']);
+        this.router.navigate(['/difficulty'],{state: this.state});
       } else if (result === ResultDialogOutputData.quit) {
         this.router.navigate(['/']);
       } else if (result === ResultDialogOutputData.retry) {

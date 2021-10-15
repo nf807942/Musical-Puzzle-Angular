@@ -19,15 +19,17 @@
             </ng-container>
         </mat-radio-group>
     </div>
+
+    <div class="radio-group" *ngIf="config.difficulty.ask_for_available_solution">
+        <label>Lecture de la piste solution : </label>
+        <div>
+            <mat-checkbox formControlName="available_solution">Oui</mat-checkbox>
+        </div>
+    </div>
     
     <div class="buttons-group-back-next">
         <button mat-raised-button routerLink="/form"><mat-icon>arrow_back</mat-icon>Retour</button>
-        <button mat-raised-button routerLink="/play" color="primary" [disabled]="!form.valid"
-                [state]="{
-                    nb_instruments: this.form.get('nb_instruments').value, 
-                    nb_pieces: this.form.get('nb_pieces').value
-                }"
-        >
+        <button mat-raised-button routerLink="/play" color="primary" [disabled]="!form.valid" [state]="{difficulty:form.value, training:false, form:state.form}">
         <mat-icon>done</mat-icon>
         Valider</button>
     </div>

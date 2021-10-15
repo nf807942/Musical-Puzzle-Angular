@@ -1,11 +1,32 @@
 {
     "difficulty": {
         "ask_for_difficulty": true,
+        "ask_for_available_solution": true,
 
         "default_instruments": 1,
         "default_pieces": 5,
+        "default_available_solution": true,
 
         "available_instruments": [1, 2, 4],
         "available_pieces": [5, 10]
+    },
+    "form": {
+        "status": [
+            {"label" : "Étudiant", "id": 0},
+            {"label" : "Actif", "id": 1},
+            {"label" : "Retaité", "id": 2},
+            {"label" : "Sans emploi", "id": 3}
+        ],
+        "musical_experience": [
+            {"label" : "Aucune expérience", "id": 0},
+            {"label" : "Amateur", "id": 1},
+            {"label" : "Professionnel", "id": 2}
+        ],
+        "musical_learning": [
+            {"label" : "Autodidacte", "id": 0},
+            {"label" : "Professeur particulier", "id": 1},
+            {"label" : "École de musique", "id": 2},
+            {"label" : "Conservatoire", "id": 3}
+        ]
     }
 }

@@ -9,6 +9,7 @@
     align-items: center;
     span {
         font-size: large;
+        white-space: nowrap;
     }
 }
 
@@ -39,10 +40,29 @@
     background-color: transparent;
     height: 5rem;
     text-align: center;
-    line-height: 5rem;
     position:relative;
     border: 1px solid #ccc;
 }
+
+.piece-index {
+    position: absolute;
+    line-height: initial;
+    margin: 0.2em;
+    font-weight: bold;
+}
+
+}
+
+.validation-button {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    button {
+        width: 20%;
+    }
+}
+
+// drag & drop animation
 
 .cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
@@ -55,13 +75,4 @@
                 0 8px 10px 1px rgba(0, 0, 0, 0.14),
                 0 3px 14px 2px rgba(0, 0, 0, 0.12);
     opacity: 0.8;
-}
-
-.validation-button {
-    text-align: center;
-    margin-top: 2em;
-    margin-bottom: 1em;
-    button {
-        width: 20%;
-    }
 }
