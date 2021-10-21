@@ -1,7 +1,10 @@
 <div class="puzzle" cdkDropListGroup>
     
     <div class="slider-container" *ngIf="available_solution">
-        <button mat-mini-fab color="primary" (click)="audio_manager.switch_solution(); startTimer()">
+        <button mat-mini-fab 
+        [color]="audio_manager.mode != modes.solution ? 'primary' : 'accent'" 
+        (click)="audio_manager.switch_solution(); startTimer()"
+        >
             <mat-icon *ngIf="audio_manager.mode != modes.solution">play_arrow</mat-icon>
             <mat-icon *ngIf="audio_manager.mode == modes.solution">pause</mat-icon>
         </button>
@@ -38,7 +41,10 @@
                         <div *cdkDragPlaceholder></div>
                         <ng-container *ngIf="!piece.empty">
                             <div class="piece-index">{{getIndex(piece)}}</div>
-                            <button (click)="audio_manager.switch_piece(piece); startTimer()" mat-mini-fab color="primary">
+                            <button mat-mini-fab
+                            [color]="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece ? 'primary' : 'accent'"
+                            (click)="audio_manager.switch_piece(piece); startTimer()"
+                            >
                                 <mat-icon *ngIf="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece">play_arrow</mat-icon>
                                 <mat-icon *ngIf="audio_manager.mode === modes.piece && audio_manager.current_piece === piece">stop</mat-icon>
                             </button>
@@ -54,7 +60,10 @@
 </div>
 
 <div class="slider-container">
-    <button mat-mini-fab color="primary" (click)="audio_manager.switch_response(); startTimer()" [disabled]="!puzzle.complete()">
+    <button mat-mini-fab 
+    [color]="audio_manager.mode != modes.response ? 'primary' : 'accent'" 
+    (click)="audio_manager.switch_response(); startTimer()" [disabled]="!puzzle.complete()"
+    >
         <mat-icon *ngIf="audio_manager.mode != modes.response">play_arrow</mat-icon>
         <mat-icon *ngIf="audio_manager.mode == modes.response">pause</mat-icon>
     </button>

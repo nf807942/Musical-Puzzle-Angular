@@ -32,8 +32,7 @@ export class PlayComponent implements OnInit, OnDestroy {
   modes = PlayingMode;
 
   // timer
-  time: number = 0;
-  timer;
+  startTime: number = 0;
 
   constructor(
     public dialog: MatDialog,
@@ -86,10 +85,8 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   startTimer() {
-    if (this.time === 0) {
-      this.timer = setInterval(() => {
-        this.time += 0.5;
-      }, 500)
+    if (this.startTime === 0) {
+      this.startTime = performance.now();
     }
   }
 
@@ -98,13 +95,14 @@ export class PlayComponent implements OnInit, OnDestroy {
    */
   openResultDialog(): void {
     this.audio_manager.stopAll();
-    clearInterval(this.timer);
+    let duration = Math.round(performance.now() - this.startTime);
+    this.startTime = 0;
 
     const dialogRef = this.dialog.open(ResultDialogComponent, 
       {
         disableClose: true,
         data: {
-          duration: this.time,
+          duration,
           pieces: this.nb_pieces,
           success_by_row: this.puzzle.correctsPiecesByRow(),
           success_total: this.puzzle.correctsPieces(),
@@ -119,7 +117,6 @@ export class PlayComponent implements OnInit, OnDestroy {
         this.router.navigate(['/']);
       } else if (result === ResultDialogOutputData.retry) {
         this.puzzle.buildPuzzle();
-        this.time = 0;
       }
     });
   }

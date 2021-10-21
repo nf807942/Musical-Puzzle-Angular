@@ -14,7 +14,7 @@
     <ng-container *ngIf="data.success_by_row.length == 1">
         <p>Bonnes réponses : {{data.success_total}} / {{data.pieces}}</p>
     </ng-container>
-    <p>Temps : {{data.duration}} secondes</p>
+    <p>Temps : {{data.duration}} millisecondes</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button [mat-dialog-close]="resultDialogData.quit"><mat-icon>close</mat-icon>Quitter</button>
