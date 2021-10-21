@@ -31,9 +31,9 @@ export class PlayComponent implements OnInit, OnDestroy {
   audio_manager: AudioPuzzleManager;
   modes = PlayingMode;
 
-  audio = new Audio();
-  playing_piece: Piece = null;
-  playing_piece_answer: Piece = null;
+  // timer
+  time: number = 0;
+  timer;
 
   constructor(
     public dialog: MatDialog,
@@ -54,21 +54,8 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     this.puzzle = new Puzzle(this.nb_pieces, this.nb_instruments)
     this.audio_manager = new AudioPuzzleManager(this.puzzle);
-
-    /**
-     * On pause la musique quand la pièce atteint sa fin
-     */
-    /*this.audio.ontimeupdate = () => {
-      if(this.playing_piece) {
-        if (this.audio.currentTime >= (this.audio.duration / this.nb_pieces) * (this.playing_piece.order + 1)) {
-          this.playing_piece.playing = false;
-          this.audio.pause();
-        }   
-      }
-    }*/
   }
 
   ngOnDestroy(): void {
@@ -98,17 +85,26 @@ export class PlayComponent implements OnInit, OnDestroy {
     return drop.data.item.instrument % this.nb_instruments === item.dropContainer.data.item.instrument;
   }
 
+  startTimer() {
+    if (this.time === 0) {
+      this.timer = setInterval(() => {
+        this.time += 0.5;
+      }, 500)
+    }
+  }
+
   /**
    * Ouvre la fenêtre de récapitulatif
    */
   openResultDialog(): void {
     this.audio_manager.stopAll();
+    clearInterval(this.timer);
 
     const dialogRef = this.dialog.open(ResultDialogComponent, 
       {
         disableClose: true,
         data: {
-          duration: 5,
+          duration: this.time,
           pieces: this.nb_pieces,
           success_by_row: this.puzzle.correctsPiecesByRow(),
           success_total: this.puzzle.correctsPieces(),
@@ -123,6 +119,7 @@ export class PlayComponent implements OnInit, OnDestroy {
         this.router.navigate(['/']);
       } else if (result === ResultDialogOutputData.retry) {
         this.puzzle.buildPuzzle();
+        this.time = 0;
       }
     });
   }
