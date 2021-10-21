@@ -32,7 +32,7 @@ import { FormComponent } from './form/form.component';
 import { DifficultyComponent } from './difficulty/difficulty.component';
 
 // Custom Services
-import { AppConfigService } from './app-config.service';
+import { AppConfigService } from './services/app-config.service';
 import { ResultDialogComponent } from './commons/dialogs/result-dialog/result-dialog.component';
 
 // Initialize the app by loading the config file

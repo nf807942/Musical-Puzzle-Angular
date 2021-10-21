@@ -1,4 +1,4 @@
-import { AppConfigService } from "../app-config.service";
+import { AppConfigService } from "../services/app-config.service";
 import { Piece } from "./piece";
 import { Puzzle } from "./puzzle";
 

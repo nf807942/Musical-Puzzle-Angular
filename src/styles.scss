@@ -58,6 +58,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 }
 
+.button-back-bottom {
+    width: 50%;
+    max-width: 300px;
+}
+
 @media (max-width: 800px) {
     .buttons-group-back-next {
         flex-direction: column;
@@ -66,5 +71,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         button {
             width: 100%;
         }
+    }
+
+    .button-back-bottom {
+        width: 100%;
+        max-width: unset;
     }
 }
