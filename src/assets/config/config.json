@@ -28,5 +28,15 @@
             {"label" : "École de musique", "id": 2},
             {"label" : "Conservatoire", "id": 3}
         ]
-    }
+    },
+    "tracks": [
+        {
+            "rows": 1,
+            "filename" : "satisfaction.mp3"
+        },
+        {
+            "rows": 2,
+            "filename" : "satisfaction.mp3"
+        }
+    ]
 }

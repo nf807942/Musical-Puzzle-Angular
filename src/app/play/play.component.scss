@@ -3,6 +3,21 @@
     flex-direction: column;
 }
 
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 1em;
+
+    mat-slider {
+        flex: 1;
+    }
+    span {
+        font-size: large;
+        white-space: nowrap;
+    }
+}
+
 .puzzle-row {
     display: flex;
     flex-direction: row;
@@ -49,20 +64,6 @@
     line-height: initial;
     margin: 0.2em;
     font-weight: bold;
-}
-
-.slider-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-
-    mat-slider {
-        flex: 1;
-    }
-    span {
-        font-size: large;
-        white-space: nowrap;
-    }
 }
 
 .validation-button {

@@ -14,5 +14,8 @@ export interface IAppConfig {
         status: {label:string, id:number}[],
         musical_experience: {label:string, id:number}[],
         musical_learning: {label:string, id:number}[]
-    }
+    },
+    tracks: {
+        rows: number, 
+        filename: string} []
 }

@@ -1,13 +1,27 @@
-<div class="puzzle" cdkDropListGroup> 
-	<ng-container *ngFor="let instrument of puzzle; let j = index">
+<div class="puzzle" cdkDropListGroup>
+    
+    <div class="slider-container" *ngIf="available_solution">
+        <button mat-mini-fab color="primary" (click)="audio_manager.switch_solution()">
+            <mat-icon *ngIf="audio_manager.mode != modes.solution">play_arrow</mat-icon>
+            <mat-icon *ngIf="audio_manager.mode == modes.solution">pause</mat-icon>
+        </button>
+        <span>Réference : </span>
+        <mat-slider 
+        [min]="0" [max]="audio_manager.duration" 
+        [value]="audio_manager.last_position_solution"
+        (input)="audio_manager.move_solution($event.value)"
+        ></mat-slider>
+    </div>
+
+	<ng-container *ngFor="let instrument of puzzle.pieces; let j = index">
+        <ng-container *ngIf="j == 0">
+            <div [class.separator-row]="this.available_solution"  class="title-row">
+                Pièces disponibles :
+            </div>
+        </ng-container>
         <ng-container *ngIf="j == nb_instruments">
             <div class="separator-row title-row">
                 Réponse :
-            </div>
-        </ng-container>
-        <ng-container *ngIf="j == 0">
-            <div class="title-row">
-                Pièces disponibles :
             </div>
         </ng-container>
         <div class="puzzle-row">
@@ -24,9 +38,9 @@
                         <div *cdkDragPlaceholder></div>
                         <ng-container *ngIf="!piece.empty">
                             <div class="piece-index">{{getIndex(piece)}}</div>
-                            <button (click)="play(piece)" mat-mini-fab color="primary">
-                                <mat-icon *ngIf="!piece.playing">play_arrow</mat-icon>
-                                <mat-icon *ngIf="piece.playing">pause</mat-icon>
+                            <button (click)="audio_manager.switch_piece(piece)" mat-mini-fab color="primary">
+                                <mat-icon *ngIf="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece">play_arrow</mat-icon>
+                                <mat-icon *ngIf="audio_manager.mode === modes.piece && audio_manager.current_piece === piece">stop</mat-icon>
                             </button>
                         </ng-container>
                     </div>
@@ -39,21 +53,22 @@
 	</ng-container>
 </div>
 
-<div class="slider-container" *ngIf="available_solution">
-    <button mat-mini-fab color="primary" (click)="play_solution()">
-        <mat-icon *ngIf="audio_solution.paused">play_arrow</mat-icon>
-        <mat-icon *ngIf="!audio_solution.paused">pause</mat-icon>
+<div class="slider-container">
+    <button mat-mini-fab color="primary" (click)="audio_manager.switch_response()" [disabled]="!puzzle.complete()">
+        <mat-icon *ngIf="audio_manager.mode != modes.response">play_arrow</mat-icon>
+        <mat-icon *ngIf="audio_manager.mode == modes.response">pause</mat-icon>
     </button>
-    <span>Réference : </span>
+    <span>Proposition : </span>
     <mat-slider 
-    [min]="0" [max]="audio_solution.duration" 
-    [value]="audio_solution_position"
-    (input)="audio_solution.currentTime = $event.value"
+    [min]="0" [max]="audio_manager.duration" 
+    [value]="audio_manager.position_slider_response()"
+    (input)="audio_manager.move_response($event.value)"
+    [disabled]="!puzzle.complete()"
     ></mat-slider>
 </div>
 
 <div class="validation-button">
-    <button mat-raised-button color="primary" [disabled]="!puzzle_complete()" (click)="openResultDialog()">
+    <button mat-raised-button color="primary" [disabled]="!puzzle.complete()" (click)="openResultDialog()">
         <mat-icon>done</mat-icon>
         Valider
     </button>
