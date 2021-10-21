@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+
+  url: 'http://localhost/PFE/musical-puzzle-angular/src/api',
   production: false
 };
 

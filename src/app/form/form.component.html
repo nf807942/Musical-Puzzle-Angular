@@ -21,7 +21,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Statut professionnel actuel</mat-label>
         <mat-select required formControlName="status">
-            <mat-option *ngFor="let option of config.form.status" [value]="option.id">{{option.label}}</mat-option>
+            <mat-option *ngFor="let option of config.form.status" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>work</mat-icon>
         <mat-error *ngIf="form.controls['status'].errors?.required">Ce champ est requis</mat-error>
@@ -32,27 +32,27 @@
     <mat-form-field appearance="fill">
         <mat-label>Expérience musicale</mat-label>
         <mat-select required formControlName="experience">
-            <mat-option *ngFor="let option of config.form.musical_experience" [value]="option.id">{{option.label}}</mat-option>
+            <mat-option *ngFor="let option of config.form.musical_experience" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>music_note</mat-icon>
         <mat-error *ngIf="form.controls['experience'].errors?.required">Ce champ est requis</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" *ngIf="form.controls['experience']?.value != 0">
+    <mat-form-field appearance="fill" *ngIf="experience()">
         <mat-label>De quelle manière avez-vous appris la musique ?</mat-label>
         <mat-select formControlName="learning">
-            <mat-option *ngFor="let option of config.form.musical_learning" [value]="option.id">{{option.label}}</mat-option>
+            <mat-option *ngFor="let option of config.form.musical_learning" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>school</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" *ngIf="form.controls['experience']?.value != 0">
+    <mat-form-field appearance="fill" *ngIf="experience()">
         <mat-label>Quels instruments avez vous pratiqué ?</mat-label>
-        <input matInput type="text" placeholder="violon, flute, ..." formControlName="instruments">
+        <input matInput type="text" autocomplete="nope" placeholder="violon, flute, ..." formControlName="instruments">
         <mat-icon matSuffix>piano</mat-icon>
       </mat-form-field>
 
-    <mat-form-field appearance="fill" *ngIf="form.controls['experience']?.value != 0">
+    <mat-form-field appearance="fill" *ngIf="experience()">
         <mat-label>Combien de temps avez vous pratiqué ?</mat-label>
         <input matInput type="number" min="0" max="100" formControlName="practice">
         <mat-icon matSuffix>hourglass_empty</mat-icon>

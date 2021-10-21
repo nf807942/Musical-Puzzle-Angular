@@ -35,11 +35,22 @@ export class FormComponent implements OnInit {
   }
 
   submit(): void {
+
+    if(!this.experience()) {
+      this.form.controls['learning'].setValue('');
+      this.form.controls['instruments'].setValue('');
+      this.form.controls['practice'].setValue('');
+    }
+
     if (AppConfigService.settings.difficulty.ask_for_difficulty) {
       this.router.navigate(['/difficulty'], {state: {training: false, form: this.form.value}})
     } else {
       this.router.navigate(['/play'], {state: {training: false, form: this.form.value}})
     }
+  }
+
+  experience(): boolean {
+    return this.form.controls['experience']?.value !== '' && this.form.controls['experience']?.value !== this.config.form.musical_experience[0];
   }
 
 }

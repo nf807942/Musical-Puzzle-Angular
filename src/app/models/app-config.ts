@@ -11,9 +11,9 @@ export interface IAppConfig {
         available_pieces: number[];
     },
     form: {
-        status: {label:string, id:number}[],
-        musical_experience: {label:string, id:number}[],
-        musical_learning: {label:string, id:number}[]
+        status: string[],
+        musical_experience: string[],
+        musical_learning: string[]
     },
     tracks: {
         rows: number, 

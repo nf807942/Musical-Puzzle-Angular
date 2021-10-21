@@ -5,6 +5,8 @@ export class Puzzle {
   nb_pieces: number;
   nb_instruments: number;
 
+  order_init: number[];
+
   constructor(nb_pieces_: number, nb_instruments_: number) {
     this.nb_pieces = nb_pieces_;
     this.nb_instruments = nb_instruments_;
@@ -14,6 +16,7 @@ export class Puzzle {
 
   buildPuzzle(): void {
     this.pieces = [];
+    this.order_init = [];
     // pour chaque instrument (row)
     for (let j = 0; j < this.nb_instruments * 2; j++) {
       this.pieces.push([]);
@@ -29,6 +32,7 @@ export class Puzzle {
         this.pieces[j][i].index = i;
       }
     }
+    this.order_init = this.orderPiece();
   }
 
   /**
@@ -70,6 +74,22 @@ export class Puzzle {
       corrects_pieces_by_row.push(corrects_pieces);
     }
     return corrects_pieces_by_row;
+  }
+
+  /**
+   * 
+   * @returns l'ordre des pièces (gauche-droite haut-bas)
+   */
+   orderPiece(): number[] {
+    let order_response = [];
+    this.pieces.forEach(intrument => {
+      intrument.forEach(piece =>{
+        if (!piece.empty) {
+          order_response.push(piece.order);
+        }
+      })
+    });
+    return order_response;
   }
 
 

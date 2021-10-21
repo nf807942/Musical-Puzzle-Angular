@@ -12,6 +12,7 @@ export enum PlayingMode {
 export class AudioPuzzleManager {
 
   audio: HTMLAudioElement[];
+  audio_name = "";
   puzzle: Puzzle;
   duration: number;
 
@@ -30,6 +31,8 @@ export class AudioPuzzleManager {
   loadTracks() {
     const tracks_with_correct_rows = AppConfigService.settings.tracks.filter(track => track.rows === this.puzzle.nb_instruments);
     const chosen_track_name = tracks_with_correct_rows[Math.floor(Math.random() * tracks_with_correct_rows.length)].filename;
+
+    this.audio_name = chosen_track_name;
 
     this.audio = [];
     for (let i = 0; i < this.puzzle.nb_instruments; i++) {

@@ -8,6 +8,8 @@ import { ResultDialogComponent, ResultDialogOutputData } from '../commons/dialog
 import { Router } from '@angular/router';
 import { AudioPuzzleManager, PlayingMode } from '../models/audio-puzzle-manager';
 import { Puzzle } from '../models/puzzle';
+import { SaveResultService } from '../services/save-result.service';
+import { Result } from '../models/result';
 
 @Component({
   selector: 'app-play',
@@ -37,13 +39,14 @@ export class PlayComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     private location: Location,
-    private router: Router) { 
+    private router: Router,
+    private saveResultService: SaveResultService) { 
 
       this.state = this.location.getState();
       
-      /*if(!this.state.training && (!this.state.form || !this.state.difficulty)) {
+      if(!this.state.training && (!this.state.form || !this.state.difficulty)) {
         this.router.navigate(["/"]);
-      }*/
+      }
 
       if(this.state.difficulty) {
         this.nb_instruments = this.state.difficulty.nb_instruments;
@@ -58,7 +61,9 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.audio_manager.stopAll();
+    if (this.audio_manager) {
+      this.audio_manager.stopAll();
+    }
   }
 
   getIndex(piece: Piece): string {
@@ -97,6 +102,13 @@ export class PlayComponent implements OnInit, OnDestroy {
     this.audio_manager.stopAll();
     let duration = Math.round(performance.now() - this.startTime);
     this.startTime = 0;
+
+    let result = {score: this.puzzle.correctsPieces(), duration, audio: this.audio_manager.audio_name, order_init:this.puzzle.order_init, order_response:this.puzzle.orderPiece()}
+    let post_data: Result = {...this.state, result};
+
+    if(!this.state.training) {
+      this.saveResultService.post('save_result', post_data).subscribe((result) => console.log(result));
+    }
 
     const dialogRef = this.dialog.open(ResultDialogComponent, 
       {

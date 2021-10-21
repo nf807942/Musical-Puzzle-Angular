@@ -21,3 +21,4 @@ Il permet de modifier les paramétres des difficultés disponibles.
 
 `ng build --prod --base-href ./` pour compiler le projet dans le dossier `dist/`.
 Il faut ensuite placer ce dossier dans `nforgeron/public_html` pour le déployer sur le serveur.
+Vérifier qu'il y a les droit d'accès sur le dossier `musical-puzzle-angular` (sinon se connecter en ssh `ssh i3m-lead-0243.u-bourgogne.fr -l nforgeron` et faire `chmod -c 777 musical-puzzle-angular`)

@@ -34,6 +34,7 @@ import { DifficultyComponent } from './difficulty/difficulty.component';
 // Custom Services
 import { AppConfigService } from './services/app-config.service';
 import { ResultDialogComponent } from './commons/dialogs/result-dialog/result-dialog.component';
+import { SaveResultService } from './services/save-result.service';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
@@ -77,13 +78,14 @@ export function initializeApp(appConfig: AppConfigService) {
     MatSliderModule,
   ],
   providers: [
+    SaveResultService,
     AppConfigService,
-       {
-         provide: APP_INITIALIZER,
-         useFactory: initializeApp,
-         deps: [AppConfigService], 
-         multi: true
-       }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppConfigService], 
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
