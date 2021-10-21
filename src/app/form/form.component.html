@@ -1,10 +1,10 @@
-<ng-container [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="title"><span>Profil</span></div>
 
     <mat-form-field appearance="fill">
         <mat-label>Adresse email</mat-label>
-        <input matInput type="email" placeholder="exemple@web.fr" required formControlName="email">
+        <input matInput type="email" placeholder="exemple@web.fr" autocomplete="email" required formControlName="email">
         <mat-icon matSuffix>email</mat-icon>
         <mat-error *ngIf="form.controls['email'].errors?.required">Ce champ est requis</mat-error>
         <mat-error *ngIf="form.controls['email'].errors?.email">L'adresse mail n'est pas valide</mat-error>
@@ -60,9 +60,9 @@
     
     <div class="buttons-group-back-next">
         <button mat-raised-button routerLink="/"><mat-icon>arrow_back</mat-icon>Retour</button>
-        <button mat-raised-button [routerLink]="next_page()" [state]="{training:false, form:form.value}" color="primary" [disabled]="!form.valid">
+        <button mat-raised-button type="submit" color="primary" [disabled]="!form.valid">
             <mat-icon>done</mat-icon>Valider
         </button>
     </div>
 
-</ng-container>
+</form>

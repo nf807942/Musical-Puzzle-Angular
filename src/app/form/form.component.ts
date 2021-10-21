@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppConfigService } from '../app-config.service';
 import { IAppConfig } from '../models/app-config';
 
@@ -14,7 +15,8 @@ export class FormComponent implements OnInit {
   config: IAppConfig;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,11 +34,12 @@ export class FormComponent implements OnInit {
     })
   }
 
-  next_page(): string {
+  submit(): void {
     if (AppConfigService.settings.difficulty.ask_for_difficulty) {
-      return '/difficulty';
+      this.router.navigate(['/difficulty'], {state: {training: false, form: this.form.value}})
+    } else {
+      this.router.navigate(['/play'], {state: {training: false, form: this.form.value}})
     }
-    return '/play';
   }
 
 }
