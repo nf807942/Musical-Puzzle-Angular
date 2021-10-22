@@ -27,7 +27,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
 // Custom Components
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { TrainingComponent } from './training/training.component';
 import { PlayComponent } from './play/play.component';
 import { PrincipeComponent } from './principe/principe.component';
 import { FooterComponent } from './commons/footer/footer.component';
@@ -55,7 +54,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     HomeComponent,
     AboutComponent,
-    TrainingComponent,
     PlayComponent,
     PrincipeComponent,
     FooterComponent,

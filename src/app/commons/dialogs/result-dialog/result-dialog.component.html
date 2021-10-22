@@ -1,23 +1,23 @@
-<h2 mat-dialog-title>Récapitulatif</h2>
+<h2 mat-dialog-title>{{'PUZZLE.SUMMARY' | translate}}</h2>
 <mat-dialog-content>
     <ng-container *ngIf="data.success_by_row.length != 1">
-        <p>Bonnes réponses :</p>
+        <p>{{'PUZZLE.ANSWERS' | translate}} :</p>
         <ul>
             <li *ngFor="let success of data.success_by_row let i = index">
-                <span>instrument {{i + 1}} : {{success}} / {{data.pieces}}</span>
+                <span>{{'PUZZLE.INSTRUMENT' | translate}} {{i + 1}} : {{success}} / {{data.pieces}}</span>
             </li>
             <li>
-                <span>total : {{data.success_total}} / {{data.pieces * data.success_by_row.length}}</span>
+                <span>{{'PUZZLE.TOTAL' | translate}} : {{data.success_total}} / {{data.pieces * data.success_by_row.length}}</span>
             </li>
         </ul>
     </ng-container>
     <ng-container *ngIf="data.success_by_row.length == 1">
-        <p>Bonnes réponses : {{data.success_total}} / {{data.pieces}}</p>
+        <p>{{'PUZZLE.ANSWERS' | translate}} : {{data.success_total}} / {{data.pieces}}</p>
     </ng-container>
-    <p>Temps : {{data.duration}} millisecondes</p>
+    <p>{{'PUZZLE.TIME' | translate}} : {{data.duration}} {{'PUZZLE.MS' | translate}}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button [mat-dialog-close]="resultDialogData.quit"><mat-icon>close</mat-icon>Quitter</button>
-  <button *ngIf="data.can_change_difficulty" mat-raised-button [mat-dialog-close]="resultDialogData.difficulty"><mat-icon>settings</mat-icon>Changer la difficulté</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="resultDialogData.retry" cdkFocusInitial><mat-icon>replay</mat-icon>Réesayer</button>
+  <button mat-raised-button [mat-dialog-close]="resultDialogData.quit"><mat-icon>close</mat-icon>{{'APP.QUIT' | translate}}</button>
+  <button *ngIf="data.can_change_difficulty" mat-raised-button [mat-dialog-close]="resultDialogData.difficulty"><mat-icon>settings</mat-icon>{{'PUZZLE.CHANGE_DIFFICULTY' | translate}}</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="resultDialogData.retry" cdkFocusInitial><mat-icon>replay</mat-icon>{{'APP.RETRY' | translate}}</button>
 </mat-dialog-actions>

@@ -8,7 +8,7 @@
             <mat-icon *ngIf="audio_manager.mode != modes.solution">play_arrow</mat-icon>
             <mat-icon *ngIf="audio_manager.mode == modes.solution">pause</mat-icon>
         </button>
-        <span>Réference : </span>
+        <span>{{'PUZZLE.SOLUTION' | translate}} : </span>
         <mat-slider 
         [min]="0" [max]="audio_manager.duration" 
         [value]="audio_manager.last_position_solution"
@@ -19,16 +19,16 @@
 	<ng-container *ngFor="let instrument of puzzle.pieces; let j = index">
         <ng-container *ngIf="j == 0">
             <div [class.separator-row]="this.available_solution"  class="title-row">
-                Pièces disponibles :
+                {{'PUZZLE.PIECES' | translate}} :
             </div>
         </ng-container>
         <ng-container *ngIf="j == nb_instruments">
             <div class="separator-row title-row">
-                Réponse :
+                {{'PUZZLE.RESPONSE' | translate}} :
             </div>
         </ng-container>
         <div class="puzzle-row">
-            <span>Instrument {{1 + j % nb_instruments}} :</span>
+            <span>{{'PUZZLE.INSTRUMENT' | translate}} {{1 + j % nb_instruments}} :</span>
             <ng-container *ngFor="let piece of instrument; let i = index">
                 <div class="piece-container" cdkDropList 
                     cdkDropListOrientation="horizontal"
@@ -92,6 +92,6 @@
 <div class="validation-button">
     <button mat-raised-button color="primary" [disabled]="!puzzle.complete()" (click)="openResultDialog()">
         <mat-icon>done</mat-icon>
-        Valider
+        {{'APP.VALIDATE' | translate}}
     </button>
 </div>

@@ -1,12 +1,12 @@
 <div fxLayout="column" class="home-container">
 
-    <div class="title-big"><span>Bienvenue !</span></div>
-    <div class="title"><span>Puzzle musical</span></div>
+    <div class="title-big"><span>{{'APP.WELCOME' | translate}}</span></div>
+    <div class="title"><span>{{'APP.TITLE' | translate}}</span></div>
     <div class="buttons-group">
-        <button routerLink="form" mat-raised-button color="primary">Jouer</button>
-        <button routerLink="principe" mat-raised-button color="primary">Comment jouer ?</button>
-        <button routerLink="training" [state]="{training:true}" mat-raised-button color="primary">Entrainement</button>
-    </div>   
+        <button routerLink="form" mat-raised-button color="primary">{{'APP.PLAY' | translate}}</button>
+        <button routerLink="principe" mat-raised-button color="primary">{{'APP.HOW' | translate}}</button>
+        <button routerLink="training" [state]="{training:true}" mat-raised-button color="primary">{{'APP.TRAINING' | translate}}</button>
+    </div>
 
     <div class="img-home">
         <img  src="assets/images/puzzle_logo.png"/>

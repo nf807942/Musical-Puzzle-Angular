@@ -1,9 +1,9 @@
 <ng-container [formGroup]="form">
 
-    <div class="title"><span>Difficulté</span></div>
+    <div class="title"><span>{{'FORM.DIFFICULTY' | translate}}</span></div>
 
     <div class="radio-group">
-        <label>Nombre d'instrument(s) : </label>
+        <label>{{'FORM.NB_INSTRUMENTS' | translate}} : </label>
         <mat-radio-group formControlName="nb_instruments">
             <ng-container *ngFor="let option of config.difficulty.available_instruments">
                 <mat-radio-button [value]="option">{{option}}</mat-radio-button>
@@ -12,7 +12,7 @@
       </div>
 
     <div class="radio-group">
-        <label>Nombre de morceaux : </label>
+        <label>{{'FORM.NB_PIECES' | translate}} : </label>
         <mat-radio-group formControlName="nb_pieces">
             <ng-container *ngFor="let option of config.difficulty.available_pieces">
                 <mat-radio-button [value]="option">{{option}}</mat-radio-button>
@@ -21,17 +21,17 @@
     </div>
 
     <div class="radio-group" *ngIf="config.difficulty.ask_for_available_solution">
-        <label>Lecture de la piste solution : </label>
+        <label>{{'FORM.SOLUTION_AVAILABLE' | translate}} : </label>
         <div>
-            <mat-checkbox formControlName="available_solution">Oui</mat-checkbox>
+            <mat-checkbox formControlName="available_solution">{{'APP.YES' | translate}}</mat-checkbox>
         </div>
     </div>
     
     <div class="buttons-group-back-next">
-        <button mat-raised-button routerLink="/form"><mat-icon>arrow_back</mat-icon>Retour</button>
+        <button mat-raised-button routerLink="/form"><mat-icon>arrow_back</mat-icon>{{'APP.BACK' | translate}}</button>
         <button mat-raised-button routerLink="/play" color="primary" [disabled]="!form.valid" [state]="{difficulty:form.value, training:false, form:state.form}">
         <mat-icon>done</mat-icon>
-        Valider</button>
+        {{'APP.VALIDATE' | translate}}</button>
     </div>
 
 </ng-container>

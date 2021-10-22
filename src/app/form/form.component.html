@@ -1,45 +1,45 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
 
-    <div class="title"><span>Profil</span></div>
+    <div class="title"><span>{{'FORM.PROFIL' | translate}}</span></div>
 
     <mat-form-field appearance="fill">
-        <mat-label>Adresse email</mat-label>
+        <mat-label>{{'FORM.EMAIL' | translate}}</mat-label>
         <input matInput type="email" placeholder="exemple@web.fr" autocomplete="email" required formControlName="email">
         <mat-icon matSuffix>email</mat-icon>
-        <mat-error *ngIf="form.controls['email'].errors?.required">Ce champ est requis</mat-error>
-        <mat-error *ngIf="form.controls['email'].errors?.email">L'adresse mail n'est pas valide</mat-error>
+        <mat-error *ngIf="form.controls['email'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
+        <mat-error *ngIf="form.controls['email'].errors?.email">{{'FORM.INVALID' | translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <mat-label>Âge</mat-label>
+        <mat-label>{{'FORM.AGE' | translate}}</mat-label>
         <input matInput type="number" min="2" max="100" required formControlName="age">
         <mat-icon matSuffix>cake</mat-icon>
-        <mat-error *ngIf="form.controls['age'].errors?.required">Ce champ est requis</mat-error>
-        <mat-error *ngIf="form.controls['age'].errors?.min || form.controls['age'].errors?.max">L'âge saisi est invalide</mat-error>
+        <mat-error *ngIf="form.controls['age'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
+        <mat-error *ngIf="form.controls['age'].errors?.min || form.controls['age'].errors?.max">{{'FORM.INVALID' | translate}}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Statut professionnel actuel</mat-label>
+        <mat-label>{{'FORM.STATUS' | translate}}</mat-label>
         <mat-select required formControlName="status">
             <mat-option *ngFor="let option of config.form.status" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>work</mat-icon>
-        <mat-error *ngIf="form.controls['status'].errors?.required">Ce champ est requis</mat-error>
+        <mat-error *ngIf="form.controls['status'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
     </mat-form-field>
 
-    <div class="title"><span>Expérience musicale</span></div>
+    <div class="title"><span>{{'FORM.EXPERIENCE' | translate}}</span></div>
 
     <mat-form-field appearance="fill">
-        <mat-label>Expérience musicale</mat-label>
+        <mat-label>{{'FORM.EXPERIENCE' | translate}}</mat-label>
         <mat-select required formControlName="experience">
             <mat-option *ngFor="let option of config.form.musical_experience" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>music_note</mat-icon>
-        <mat-error *ngIf="form.controls['experience'].errors?.required">Ce champ est requis</mat-error>
+        <mat-error *ngIf="form.controls['experience'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" *ngIf="experience()">
-        <mat-label>De quelle manière avez-vous appris la musique ?</mat-label>
+        <mat-label>{{'FORM.LEARNING' | translate}}</mat-label>
         <mat-select formControlName="learning">
             <mat-option *ngFor="let option of config.form.musical_learning" [value]="option">{{option}}</mat-option>
         </mat-select>
@@ -47,21 +47,22 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" *ngIf="experience()">
-        <mat-label>Quels instruments avez vous pratiqué ?</mat-label>
+        <mat-label>{{'FORM.INSTRUMENTS' | translate}}</mat-label>
         <input matInput type="text" autocomplete="nope" placeholder="violon, flute, ..." formControlName="instruments">
         <mat-icon matSuffix>piano</mat-icon>
       </mat-form-field>
 
     <mat-form-field appearance="fill" *ngIf="experience()">
-        <mat-label>Combien de temps avez vous pratiqué ?</mat-label>
+        <mat-label>{{'FORM.PRACTICE' | translate}}</mat-label>
         <input matInput type="number" min="0" max="100" formControlName="practice">
         <mat-icon matSuffix>hourglass_empty</mat-icon>
+        <mat-hint>{{'FORM.YEARS' | translate}}</mat-hint>
     </mat-form-field>
     
-    <div class="buttons-group-back-next">
-        <button mat-raised-button routerLink="/"><mat-icon>arrow_back</mat-icon>Retour</button>
+    <div class="buttons-group-back-next padding-top">
+        <button mat-raised-button routerLink="/"><mat-icon>arrow_back</mat-icon>{{'APP.BACK' | translate}}</button>
         <button mat-raised-button type="submit" color="primary" [disabled]="!form.valid">
-            <mat-icon>done</mat-icon>Valider
+            <mat-icon>done</mat-icon>{{'APP.VALIDATE' | translate}}
         </button>
     </div>
 

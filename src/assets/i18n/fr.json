@@ -4,6 +4,57 @@
         "EN": "Anglais"
     },
     "APP": {
-        "TITLE": "Puzzle Musical"
+        "TITLE": "Puzzle Musical",
+        "WELCOME": "Bienvenue !",
+        "PLAY": "Jouer",
+        "HOW": "Comment jouer ?",
+        "TRAINING": "Entrainement",
+        "ABOUT": "À propos / Contact",
+        "CONTACT": "Contact",
+        "CGU": "Conditions d'utilisation",
+        "DEVELOPMENT": "Réalisation",
+        "VERSION": "Version",
+
+        "YES": "Oui",
+        "VALIDATE": "Valider",
+        "BACK": "Retour",
+        "QUIT": "Quitter",
+        "RETRY": "Réesayer"
+    },
+    "DEVELOPMENT": {
+        "LINE1": "Application web réalisée par Nicolas Forgeron dans le cadre de son PFE.",
+        "LINE2": "Avec la direction de Patrick Bard"
+    },
+    "FORM": {
+        "PROFIL": "Profil",
+        "EMAIL": "Adresse email",  
+        "AGE": "Âge",
+        "STATUS": "Statut professionnel actuel",
+        "EXPERIENCE": "Expérience musicale",
+        "LEARNING": "De quelle manière avez-vous appris la musique ?",
+        "INSTRUMENTS": "Quels instruments avez vous pratiqué ?",
+        "PRACTICE": "Combien de temps avez vous pratiqué ?",
+        "YEARS": "En nombre d'années",
+
+        "DIFFICULTY": "Difficulté",
+        "NB_INSTRUMENTS": "Nombre d'instruments",
+        "NB_PIECES": "Nombre de pièces",
+        "SOLUTION_AVAILABLE": "Lecture de la piste solution",
+
+        "REQUIRED": "Ce champ est requis",
+        "INVALID": "Le champ n'est pas valide"
+    },
+    "PUZZLE": {
+        "SOLUTION": "Réference",
+        "PIECES": "Pièces disponibles",
+        "RESPONSE": "Réponse",
+        "INSTRUMENT": "Instrument",
+
+        "SUMMARY": "Récapitulatif",
+        "ANSWERS": "Bonnes réponses",
+        "TOTAL": "Total",
+        "TIME": "Temps",
+        "MS": "millisecondes",
+        "CHANGE_DIFFICULTY": "Changer la difficulté"
     }
 }

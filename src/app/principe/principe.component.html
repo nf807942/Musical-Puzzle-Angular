@@ -1,8 +1,8 @@
-<div class="title"><span>Comment jouer ?</span></div>
+<div class="title"><span>{{'APP.HOW' | translate}}</span></div>
 
 <div class="buttons-group">
-    <button routerLink="/form" mat-raised-button color="primary">Jouer</button>
-    <button routerLink="/training" [state]="{training:true}" mat-raised-button color="primary">Entrainement</button>
+    <button routerLink="/form" mat-raised-button color="primary">{{'APP.PLAY' | translate}}</button>
+    <button routerLink="/training" [state]="{training:true}" mat-raised-button color="primary">{{'APP.TRAINING' | translate}}</button>
 </div>
 
 <video controls="">
@@ -12,6 +12,6 @@
 <div class="padding-top" fxLayout="row" fxLayoutAlign="center center">
     <button mat-raised-button routerLink="/" class="button-back-bottom">
         <mat-icon>arrow_back</mat-icon>
-        Retour
+        {{'APP.BACK' | translate}}
     </button>
 </div>

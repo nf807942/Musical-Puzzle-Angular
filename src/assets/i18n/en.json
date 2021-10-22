@@ -4,6 +4,58 @@
         "EN": "English"
     },
     "APP": {
-        "TITLE": "Musical Puzzle"
+        "TITLE": "Musical Puzzle",
+        "WELCOME": "Welcome!",
+        "PLAY": "Play",
+        "HOW": "How to play?",
+        "TRAINING": "Training",
+        "ABOUT": "About",
+        "CONTACT": "Contact",
+        "CGU": "Terms of use",
+        "DEVELOPMENT": "Development",
+        "VERSION": "Version",
+
+        "YES": "Yes",
+        "VALIDATE": "Validate",
+        "BACK": "Go back",
+        "QUIT": "Quit",
+        "RETRY": "Retry"
+    },
+    "DEVELOPMENT": {
+        "LINE1": "Web application developed by Nicolas Forgeron as part of his PFE.",
+        "LINE2": "With the direction of Patrick Bard"
+    },
+    "FORM": {
+        "PROFIL": "Profile",
+        "EMAIL": "Email address",  
+        "AGE": "Age",
+        "STATUS": "Current professional status",
+        "EXPERIENCE": "Musical experience",
+        "LEARNING": "How did you learn music?",
+        "INSTRUMENTS": "What instruments have you practiced?",
+        "PRACTICE": "How long have you practiced?",
+        "YEARS": "In number of years",
+
+        "DIFFICULTY": "Difficulty",
+        "NB_INSTRUMENTS": "Number of instruments",
+        "NB_PIECES": "Number of pieces",
+        "SOLUTION_AVAILABLE": "Solution track available",
+
+        "REQUIRED": "This field is required",
+        "INVALID": "The field is invalid"
+    },
+    "PUZZLE": {
+        "SOLUTION": "Solution",
+        "PIECES": "Pieces available",
+        "RESPONSE": "Response",
+        "INSTRUMENT": "Instrument",
+
+        "SUMMARY": "Summary",
+        "ANSWERS": "Correct answers",
+        "TOTAL": "Total",
+        "TIME": "Time",
+        "MS": "milliseconds",
+        "CHANGE_DIFFICULTY": "Change difficulty"
+   
     }
 }
