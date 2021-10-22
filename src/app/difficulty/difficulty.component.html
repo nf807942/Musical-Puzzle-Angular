@@ -26,6 +26,13 @@
             <mat-checkbox formControlName="available_solution">{{'APP.YES' | translate}}</mat-checkbox>
         </div>
     </div>
+
+    <div class="radio-group" *ngIf="config.difficulty.ask_for_pieces_slider">
+        <label>{{'FORM.PIECES_SLIDER' | translate}} : </label>
+        <div>
+            <mat-checkbox formControlName="pieces_slider">{{'APP.YES' | translate}}</mat-checkbox>
+        </div>
+    </div>
     
     <div class="buttons-group-back-next">
         <button mat-raised-button routerLink="/form"><mat-icon>arrow_back</mat-icon>{{'APP.BACK' | translate}}</button>

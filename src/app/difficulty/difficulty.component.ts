@@ -37,6 +37,7 @@ export class DifficultyComponent implements OnInit {
       nb_instruments: this.fb.control(this.config.difficulty.default_instruments, {validators:[Validators.required]}),
       nb_pieces: this.fb.control(this.config.difficulty.default_pieces, {validators:[Validators.required]}),
       available_solution: this.fb.control(this.config.difficulty.default_available_solution, {validators:[Validators.required]}),
+      pieces_slider: this.fb.control(this.config.difficulty.default_pieces_slider, {validators:[Validators.required]}),
     })
   }
 }

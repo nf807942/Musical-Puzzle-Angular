@@ -40,6 +40,7 @@
         "NB_INSTRUMENTS": "Nombre d'instruments",
         "NB_PIECES": "Nombre de pièces",
         "SOLUTION_AVAILABLE": "Lecture de la piste solution",
+        "PIECES_SLIDER": "Barre de défilement individuelle sur les pièces",
 
         "REQUIRED": "Ce champ est requis",
         "INVALID": "Le champ n'est pas valide"

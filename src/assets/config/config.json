@@ -2,10 +2,12 @@
     "difficulty": {
         "ask_for_difficulty": true,
         "ask_for_available_solution": true,
+        "ask_for_pieces_slider": true,
 
         "default_instruments": 1,
         "default_pieces": 5,
         "default_available_solution": true,
+        "default_pieces_slider": true,
 
         "available_instruments": [1, 2],
         "available_pieces": [5, 10]

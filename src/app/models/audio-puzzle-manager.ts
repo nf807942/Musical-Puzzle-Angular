@@ -71,6 +71,10 @@ export class AudioPuzzleManager {
               } else {
                 this.switch_piece(this.puzzle.pieces[this.puzzle.rowOfPiece(this.current_piece)][piece_index + 1]);
               }
+            } else {
+              track.pause();
+              this.current_piece = null;
+              this.mode = PlayingMode.empty;
             }
           } 
           this.last_position_piece = track.currentTime;
@@ -94,7 +98,6 @@ export class AudioPuzzleManager {
 
         if (this.mode !== PlayingMode.piece) {
           this.mode = PlayingMode.empty;
-          this.current_piece = null;
         }
       }
     }
@@ -118,13 +121,11 @@ export class AudioPuzzleManager {
         track.play();
       });
       this.mode = PlayingMode.solution;
-      this.current_piece = null;
     } else {
       this.audio.forEach(track => {
         track.pause();
       });
       this.mode = PlayingMode.empty;
-      this.current_piece = null;
     }
   }
 
@@ -141,7 +142,11 @@ export class AudioPuzzleManager {
     if ((this.mode !== PlayingMode.piece || this.current_piece !== piece) && !piece.empty) {
       this.audio.forEach((track, index) => {
         if (piece.instrument === index) {
-          track.currentTime = (this.duration / this.puzzle.nb_pieces) * piece.order;
+          if (this.current_piece === piece) {
+            track.currentTime = this.last_position_piece;
+          } else {
+            track.currentTime = (this.duration / this.puzzle.nb_pieces) * piece.order;
+          }
           this.last_position_piece = track.currentTime;
           this.current_piece = piece;
           track.play();
@@ -155,7 +160,7 @@ export class AudioPuzzleManager {
         track.pause();
       });
       this.mode = PlayingMode.empty;
-      this.current_piece = null;
+      this.current_piece = piece.empty ? null : this.current_piece;
     }
   }
 
@@ -171,7 +176,7 @@ export class AudioPuzzleManager {
         }
       });
     }
-    this.last_position_piece = position;
+    this.last_position_piece = (this.duration / this.puzzle.nb_pieces) * piece.order + position;
     this.current_piece = piece;
   }
 

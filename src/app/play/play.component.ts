@@ -25,6 +25,7 @@ export class PlayComponent implements OnInit, OnDestroy {
   nb_pieces = AppConfigService.settings.difficulty.default_pieces;
   nb_instruments = AppConfigService.settings.difficulty.default_instruments;
   available_solution = AppConfigService.settings.difficulty.default_available_solution;
+  pieces_slider = AppConfigService.settings.difficulty.default_pieces_slider;
   colors: Array<string> = ['aliceblue','antiquewhite','burlywood','darkkhaki']
 
   puzzle: Puzzle;
@@ -53,7 +54,8 @@ export class PlayComponent implements OnInit, OnDestroy {
       if(this.state.difficulty) {
         this.nb_instruments = this.state.difficulty.nb_instruments;
         this.nb_pieces = this.state.difficulty.nb_pieces;
-        this.available_solution = this.state.difficulty.available_solution
+        this.available_solution = this.state.difficulty.available_solution;
+        this.pieces_slider = this.state.difficulty.pieces_slider;
       }
   }
 

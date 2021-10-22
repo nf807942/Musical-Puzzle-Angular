@@ -40,6 +40,7 @@
         "NB_INSTRUMENTS": "Number of instruments",
         "NB_PIECES": "Number of pieces",
         "SOLUTION_AVAILABLE": "Solution track available",
+        "PIECES_SLIDER": "Individual slider for the pieces",
 
         "REQUIRED": "This field is required",
         "INVALID": "The field is invalid"

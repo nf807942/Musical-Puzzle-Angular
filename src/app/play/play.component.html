@@ -49,18 +49,17 @@
                             (click)="audio_manager.switch_piece(piece); startTimer()"
                             >
                                 <mat-icon *ngIf="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece">play_arrow</mat-icon>
-                                <mat-icon *ngIf="audio_manager.mode === modes.piece && audio_manager.current_piece === piece">stop</mat-icon>
+                                <mat-icon *ngIf="audio_manager.mode === modes.piece && audio_manager.current_piece === piece">pause</mat-icon>
                             </button>
                             <br/>
-                            <mat-slider (mouseenter)="dragging = false;" (mouseleave)="dragging = true;" min="0" [max]="audio_manager.duration / puzzle.nb_pieces"
+                            <mat-slider *ngIf="pieces_slider" (mouseenter)="dragging = false;" (mouseleave)="dragging = true;" min="0" [max]="audio_manager.duration / puzzle.nb_pieces"
                             [value]="audio_manager.current_piece === piece ? (audio_manager.last_position_piece + 0.01) % (audio_manager.duration / puzzle.nb_pieces) : 0"
                             (input)="audio_manager.move_piece($event.value, piece)"
                             ></mat-slider>
 
-                            <!--<mat-progress-bar mode="determinate"
-                            [value]="audio_manager.current_piece === piece ?
-                            100 * ((audio_manager.last_position_piece + 0.01) % (audio_manager.duration / puzzle.nb_pieces)) / (audio_manager.duration / puzzle.nb_pieces) : 0">
-                            </mat-progress-bar>-->
+                            <mat-progress-bar *ngIf="!pieces_slider" mode="determinate"
+                            [value]="audio_manager.current_piece === piece ? ((audio_manager.last_position_piece + 0.01) % (audio_manager.duration / puzzle.nb_pieces)) * (100 / (audio_manager.duration / puzzle.nb_pieces)) : 0">
+                            </mat-progress-bar>
                         </ng-container>
                     </div>
                     <div class="space" cdkDrag *ngIf="piece.empty" cdkDragDisabled=true>
