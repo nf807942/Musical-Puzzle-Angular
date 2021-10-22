@@ -129,10 +129,50 @@ export class AudioPuzzleManager {
   }
 
   move_solution(position: number): void {
-    this.audio.forEach(track => {
-      track.currentTime = position;
-      this.last_position_solution = position;
-    });
+    if (this.mode === PlayingMode.solution) {
+      this.audio.forEach(track => {
+        track.currentTime = position;
+      });
+    }
+    this.last_position_solution = position;
+  }
+
+  switch_piece(piece: Piece): void {
+    if ((this.mode !== PlayingMode.piece || this.current_piece !== piece) && !piece.empty) {
+      this.audio.forEach((track, index) => {
+        if (piece.instrument === index) {
+          track.currentTime = (this.duration / this.puzzle.nb_pieces) * piece.order;
+          this.last_position_piece = track.currentTime;
+          this.current_piece = piece;
+          track.play();
+        } else {
+          track.pause();
+        }
+      });
+      this.mode = PlayingMode.piece;
+    } else {
+      this.audio.forEach(track => {
+        track.pause();
+      });
+      this.mode = PlayingMode.empty;
+      this.current_piece = null;
+    }
+  }
+
+  move_piece(position: number, piece: Piece): void {
+    if (this.mode === PlayingMode.piece) {
+      this.audio.forEach((track, index) => {
+        if (piece.instrument === index) {
+          track.currentTime = (this.duration / this.puzzle.nb_pieces) * piece.order + position;
+          this.current_piece = piece;
+          track.paused ? track.play() : null;
+        } else {
+          track.pause();
+        }
+      });
+    }
+    this.last_position_piece = position;
+    this.current_piece = piece;
   }
 
   /**
@@ -163,27 +203,6 @@ export class AudioPuzzleManager {
 
       this.last_position_response = track.currentTime;
     });
-  }
-
-  switch_piece(piece: Piece): void {
-    if ((this.mode !== PlayingMode.piece || this.current_piece !== piece) && !piece.empty) {
-      this.audio.forEach((track, index) => {
-        if (piece.instrument === index) {
-          track.currentTime = (this.duration / this.puzzle.nb_pieces) * piece.order;
-          this.current_piece = piece;
-          track.play();
-        } else {
-          track.pause();
-        }
-      });
-      this.mode = PlayingMode.piece;
-    } else {
-      this.audio.forEach(track => {
-        track.pause();
-      });
-      this.mode = PlayingMode.empty;
-      this.current_piece = null;
-    }
   }
 
   position_slider_response(): number {

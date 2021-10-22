@@ -36,6 +36,8 @@ export class PlayComponent implements OnInit, OnDestroy {
   // timer
   startTime: number = 0;
 
+  dragging = true;
+
   constructor(
     public dialog: MatDialog,
     private location: Location,

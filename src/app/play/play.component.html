@@ -13,7 +13,6 @@
         [min]="0" [max]="audio_manager.duration" 
         [value]="audio_manager.last_position_solution"
         (input)="audio_manager.move_solution($event.value)"
-        [disabled]="audio_manager.mode !== modes.solution"
         ></mat-slider>
     </div>
 
@@ -38,24 +37,33 @@
                     (cdkDropListDropped)="drop($event); startTimer()"
                     [style.backgroundColor]="colors[j % nb_instruments]">
 
-                    <div class="space movable" cdkDrag *ngIf="!piece.empty" [style.backgroundColor]="colors[j % nb_instruments]">
+                    <div class="space movable" cdkDrag [cdkDragDisabled]="!dragging"
+                    *ngIf="!piece.empty" [style.backgroundColor]="colors[j % nb_instruments]"
+                    >
                         <div *cdkDragPlaceholder></div>
                         <ng-container *ngIf="!piece.empty">
                             <div class="piece-index">{{getIndex(piece)}}</div>
-                            <button mat-mini-fab
+                            <mat-icon class="piece-move">open_with</mat-icon>
+                            <button class="piece-button" mat-mini-fab
                             [color]="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece ? 'primary' : 'accent'"
                             (click)="audio_manager.switch_piece(piece); startTimer()"
                             >
                                 <mat-icon *ngIf="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece">play_arrow</mat-icon>
                                 <mat-icon *ngIf="audio_manager.mode === modes.piece && audio_manager.current_piece === piece">stop</mat-icon>
                             </button>
-                            <mat-progress-bar mode="determinate"
+                            <br/>
+                            <mat-slider (mouseenter)="dragging = false;" (mouseleave)="dragging = true;" min="0" [max]="audio_manager.duration / puzzle.nb_pieces"
+                            [value]="audio_manager.current_piece === piece ? (audio_manager.last_position_piece + 0.01) % (audio_manager.duration / puzzle.nb_pieces) : 0"
+                            (input)="audio_manager.move_piece($event.value, piece)"
+                            ></mat-slider>
+
+                            <!--<mat-progress-bar mode="determinate"
                             [value]="audio_manager.current_piece === piece ?
                             100 * ((audio_manager.last_position_piece + 0.01) % (audio_manager.duration / puzzle.nb_pieces)) / (audio_manager.duration / puzzle.nb_pieces) : 0">
-                            </mat-progress-bar>
+                            </mat-progress-bar>-->
                         </ng-container>
                     </div>
-                    <div class="space" cdkDrag *ngIf="piece.empty" cdkDragDisabled=true >
+                    <div class="space" cdkDrag *ngIf="piece.empty" cdkDragDisabled=true>
                         <div *cdkDragPlaceholder></div>
                     </div>
                 </div>
@@ -64,7 +72,7 @@
 	</ng-container>
 </div>
 
-<div class="slider-container">
+<!--<div class="slider-container">
     <button mat-mini-fab 
     [color]="audio_manager.mode != modes.response ? 'primary' : 'accent'" 
     (click)="audio_manager.switch_response(); startTimer()" [disabled]="!puzzle.complete()"
@@ -79,7 +87,7 @@
     (input)="audio_manager.move_response($event.value)"
     [disabled]="!puzzle.complete()"
     ></mat-slider>
-</div>
+</div>-->
 
 <div class="validation-button">
     <button mat-raised-button color="primary" [disabled]="!puzzle.complete()" (click)="openResultDialog()">

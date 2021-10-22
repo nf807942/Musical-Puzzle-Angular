@@ -7,7 +7,7 @@
         "default_pieces": 5,
         "default_available_solution": true,
 
-        "available_instruments": [1, 2, 4],
+        "available_instruments": [1, 2],
         "available_pieces": [5, 10]
     },
     "form": {
