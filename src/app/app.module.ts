@@ -6,7 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Material Component Modules
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -19,6 +21,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatMenuModule} from '@angular/material/menu';
 
 // Custom Components
 import { HomeComponent } from './home/home.component';
@@ -30,15 +33,20 @@ import { FooterComponent } from './commons/footer/footer.component';
 import { ToolbarComponent } from './commons/toolbar/toolbar.component';
 import { FormComponent } from './form/form.component';
 import { DifficultyComponent } from './difficulty/difficulty.component';
+import { ResultDialogComponent } from './commons/dialogs/result-dialog/result-dialog.component';
 
 // Custom Services
 import { AppConfigService } from './services/app-config.service';
-import { ResultDialogComponent } from './commons/dialogs/result-dialog/result-dialog.component';
 import { SaveResultService } from './services/save-result.service';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
   return () => appConfig.load();
+}
+
+// Loading the translator
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -76,6 +84,17 @@ export function initializeApp(appConfig: AppConfigService) {
     MatDialogModule,
     MatCheckboxModule,
     MatSliderModule,
+    MatMenuModule,
+
+    // Traduction Module
+    TranslateModule.forRoot({
+      defaultLanguage: 'fr',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     SaveResultService,

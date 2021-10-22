@@ -1,4 +1,20 @@
 <mat-toolbar color="primary">
     <img class="logo-toolbar clickable" routerLink="/" src="assets/images/puzzle_logo.png"/>
-    <a class="title-toolbar neutral-link" routerLink="/">LEAD - Puzzle Musical</a>
+    <a class="title-toolbar neutral-link" routerLink="/">LEAD - {{'APP.TITLE' | translate}}</a>
+
+    <span class="spacer"></span>
+    <ng-container>
+        <mat-icon>language</mat-icon>
+        <button mat-button [matMenuTriggerFor]="menuLanguage">
+            {{'LANGUAGE.' + currentLanguage | uppercase | translate}}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuLanguage="matMenu">
+            <a mat-menu-item *ngFor="let language of languageList" (click)="setLanguage(language)">
+                {{'LANGUAGE.' + language | uppercase | translate}}
+            </a>
+        </mat-menu>
+    </ng-container>
   </mat-toolbar>
+
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  currentLanguage: string;
+  languageList = [
+    'en', 'fr'
+  ];
 
-  ngOnInit(): void {
+  constructor(
+    private translate: TranslateService
+  ) {
+    this.currentLanguage = translate.currentLang;
+  }
+
+  ngOnInit() {
+  }
+
+  setLanguage(language: string): void {
+    this.translate.use(language);
+    this.currentLanguage = language;
   }
 
 }
