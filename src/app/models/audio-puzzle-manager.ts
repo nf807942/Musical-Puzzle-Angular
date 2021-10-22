@@ -20,6 +20,7 @@ export class AudioPuzzleManager {
 
   last_position_solution: number = 0;
   last_position_response: number = 0;
+  last_position_piece: number = 0;
   current_piece: Piece = null;
   
   constructor(puzzle_: Puzzle) {
@@ -47,9 +48,9 @@ export class AudioPuzzleManager {
       }
 
       track.ontimeupdate = () => {
-        if (this.mode === PlayingMode.solution) {
+        if (this.mode === PlayingMode.solution) { // si lecture de la solution
           this.last_position_solution = track.currentTime;
-        } else if (this.mode === PlayingMode.response) {
+        } else if (this.mode === PlayingMode.response) { // si lecture de la réponse
           if (track.currentTime > (this.duration / this.puzzle.nb_pieces) * (this.current_piece.order + 1)) {
             if (this.puzzle.nb_pieces > this.current_piece.order + 1) {
               this.current_piece = this.puzzle.pieces[this.current_piece.instrument + this.puzzle.nb_instruments][this.puzzle.pieces[this.current_piece.instrument + this.puzzle.nb_instruments].indexOf(this.current_piece) + 1];
@@ -60,14 +61,19 @@ export class AudioPuzzleManager {
               this.mode = PlayingMode.empty;
             }
           } 
-          console.log(track.currentTime);
           this.last_position_response = track.currentTime;
-        } else if (this.mode === PlayingMode.piece) {
-          if (track.currentTime >= (this.duration / this.puzzle.nb_pieces) * (this.current_piece.order + 1)) {
-            track.pause();
-            this.current_piece = null;
-            this.mode = PlayingMode.empty;
+        } else if (this.mode === PlayingMode.piece) { // si lecture d'une piece
+          if (!track.paused && track.currentTime >= (this.duration / this.puzzle.nb_pieces) * (this.current_piece.order + 1)) { // si on arrive à la fin d'une pièce
+            let piece_index = this.puzzle.pieces[this.puzzle.rowOfPiece(this.current_piece)].indexOf(this.current_piece);
+            if (piece_index + 1 < this.puzzle.nb_pieces && this.current_piece.order + 1 < this.puzzle.nb_pieces) { // si c'est pas la derniere piece de la ligne et que c'est pas la fin de la musique
+              if (this.current_piece.order + 1 === this.puzzle.pieces[this.puzzle.rowOfPiece(this.current_piece)][piece_index + 1].order) { // si la pièce suivante doit se lire sans coupure
+                this.current_piece = this.puzzle.pieces[this.puzzle.rowOfPiece(this.current_piece)][piece_index + 1];
+              } else {
+                this.switch_piece(this.puzzle.pieces[this.puzzle.rowOfPiece(this.current_piece)][piece_index + 1]);
+              }
+            }
           } 
+          this.last_position_piece = track.currentTime;
         }
       }
 
@@ -76,9 +82,20 @@ export class AudioPuzzleManager {
           this.last_position_solution = 0;
         } else if (this.mode === PlayingMode.response) {
           this.last_position_response = 0;
+        } else if (this.mode === PlayingMode.piece) {
+          let piece_index = this.puzzle.pieces[this.puzzle.rowOfPiece(this.current_piece)].indexOf(this.current_piece);
+          if (piece_index + 1 < this.puzzle.nb_pieces) { // si c'est pas la derniere piece de la ligne
+            this.switch_piece(this.puzzle.pieces[this.puzzle.rowOfPiece(this.current_piece)][piece_index + 1]);
+          } else {
+            this.mode = PlayingMode.empty;
+            this.current_piece = null;
+          }
         }
-        this.mode = PlayingMode.empty;
-        this.current_piece = null;
+
+        if (this.mode !== PlayingMode.piece) {
+          this.mode = PlayingMode.empty;
+          this.current_piece = null;
+        }
       }
     }
   }
@@ -149,7 +166,7 @@ export class AudioPuzzleManager {
   }
 
   switch_piece(piece: Piece): void {
-    if (this.mode !== PlayingMode.piece || this.current_piece !== piece) {
+    if ((this.mode !== PlayingMode.piece || this.current_piece !== piece) && !piece.empty) {
       this.audio.forEach((track, index) => {
         if (piece.instrument === index) {
           track.currentTime = (this.duration / this.puzzle.nb_pieces) * piece.order;

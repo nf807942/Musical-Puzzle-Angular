@@ -13,6 +13,7 @@
         [min]="0" [max]="audio_manager.duration" 
         [value]="audio_manager.last_position_solution"
         (input)="audio_manager.move_solution($event.value)"
+        [disabled]="audio_manager.mode !== modes.solution"
         ></mat-slider>
     </div>
 
@@ -48,6 +49,10 @@
                                 <mat-icon *ngIf="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece">play_arrow</mat-icon>
                                 <mat-icon *ngIf="audio_manager.mode === modes.piece && audio_manager.current_piece === piece">stop</mat-icon>
                             </button>
+                            <mat-progress-bar mode="determinate"
+                            [value]="audio_manager.current_piece === piece ?
+                            100 * ((audio_manager.last_position_piece + 0.01) % (audio_manager.duration / puzzle.nb_pieces)) / (audio_manager.duration / puzzle.nb_pieces) : 0">
+                            </mat-progress-bar>
                         </ng-container>
                     </div>
                     <div class="space" cdkDrag *ngIf="piece.empty" cdkDragDisabled=true >

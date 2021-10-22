@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressBarModule} from '@angular/material/progress-bar'
 
 // Custom Components
 import { HomeComponent } from './home/home.component';
@@ -85,6 +86,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckboxModule,
     MatSliderModule,
     MatMenuModule,
+    MatProgressBarModule,
 
     // Traduction Module
     TranslateModule.forRoot({

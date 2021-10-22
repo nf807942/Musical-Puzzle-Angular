@@ -23,7 +23,7 @@ export class Puzzle {
       // pour chaque emplacement
       for (let i = 0; i < this.nb_pieces; i++) {
         // ajout de la pièce
-        this.pieces[j].push(new Piece(j, i, j >= this.nb_instruments, false, 0));
+        this.pieces[j].push(new Piece(j, i, j >= this.nb_instruments, i));
       }
       // mélange du puzzle
       this.pieces[j] = this.shuffle(this.pieces[j]);
@@ -90,6 +90,15 @@ export class Puzzle {
       })
     });
     return order_response;
+  }
+
+  /**
+   * retourne dans quelle ligne est placée la pièce
+   * @param piece 
+   * @returns index de la ligne
+   */
+  rowOfPiece(piece: Piece): number {
+    return this.pieces.findIndex(instrument => instrument.indexOf(piece) !== -1);
   }
 
 
