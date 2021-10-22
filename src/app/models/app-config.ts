@@ -1,4 +1,8 @@
 export interface IAppConfig {
+    language: {
+        available_languages: string[];
+        default_language: string;
+    }
     difficulty: {
         ask_for_difficulty: boolean;
         ask_for_available_solution: boolean;
@@ -13,9 +17,11 @@ export interface IAppConfig {
         available_pieces: number[];
     },
     form: {
-        status: string[];
-        musical_experience: string[];
-        musical_learning: string[];
+        [index:string] : {
+            status: string[];
+            musical_experience: string[];
+            musical_learning: string[];
+        }
     },
     tracks: {
         rows: number;

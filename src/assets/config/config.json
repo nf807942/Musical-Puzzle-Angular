@@ -1,4 +1,11 @@
 {
+    "language": {
+        "available_languages": [
+            "fr",
+            "en"
+        ],
+        "default_language": "fr"
+    },
     "difficulty": {
         "ask_for_difficulty": true,
         "ask_for_available_solution": true,
@@ -13,23 +20,44 @@
         "available_pieces": [5, 10]
     },
     "form": {
-        "status": [
-            "Étudiant",
-            "Actif",
-            "Retaité",
-            "Sans emploi"
-        ],
-        "musical_experience": [
-            "Aucune expérience",
-            "Amateur",
-            "Professionnel"
-        ],
-        "musical_learning": [
-            "Autodidacte",
-            "Professeur particulier",
-            "École de musique",
-            "Conservatoire"
-        ]
+        "fr": {
+            "status": [
+                "Étudiant",
+                "Actif",
+                "Retaité",
+                "Sans emploi"
+            ],
+            "musical_experience": [
+                "Aucune expérience",
+                "Amateur",
+                "Professionnel"
+            ],
+            "musical_learning": [
+                "Autodidacte",
+                "Professeur particulier",
+                "École de musique",
+                "Conservatoire"
+            ]
+        },
+        "en": {
+            "status": [
+                "Student",
+                "Worker",
+                "Retired",
+                "Unemployed"
+            ],
+            "musical_experience": [
+                "No experience",
+                "Amateur",
+                "Professional"
+            ],
+            "musical_learning": [
+                "Self-taught",
+                "Tutor",
+                "Music school",
+                "Conservatory"
+            ]
+        }
     },
     "tracks": [
         {

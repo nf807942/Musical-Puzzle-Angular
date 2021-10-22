@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AppConfigService } from 'src/app/services/app-config.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,14 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class ToolbarComponent implements OnInit {
 
   currentLanguage: string;
-  languageList = [
-    'en', 'fr'
-  ];
+  languageList: string[];
 
   constructor(
     private translate: TranslateService
   ) {
     this.currentLanguage = translate.currentLang;
+    this.languageList = AppConfigService.settings.language.available_languages;
   }
 
   ngOnInit() {

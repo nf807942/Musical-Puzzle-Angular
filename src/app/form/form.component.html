@@ -21,7 +21,7 @@
       <mat-form-field appearance="fill">
         <mat-label>{{'FORM.STATUS' | translate}}</mat-label>
         <mat-select required formControlName="status">
-            <mat-option *ngFor="let option of config.form.status" [value]="option">{{option}}</mat-option>
+            <mat-option *ngFor="let option of config.form[currentLanguage()].status" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>work</mat-icon>
         <mat-error *ngIf="form.controls['status'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
@@ -32,7 +32,7 @@
     <mat-form-field appearance="fill">
         <mat-label>{{'FORM.EXPERIENCE' | translate}}</mat-label>
         <mat-select required formControlName="experience">
-            <mat-option *ngFor="let option of config.form.musical_experience" [value]="option">{{option}}</mat-option>
+            <mat-option *ngFor="let option of config.form[currentLanguage()].musical_experience" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>music_note</mat-icon>
         <mat-error *ngIf="form.controls['experience'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
@@ -41,7 +41,7 @@
     <mat-form-field appearance="fill" *ngIf="experience()">
         <mat-label>{{'FORM.LEARNING' | translate}}</mat-label>
         <mat-select formControlName="learning">
-            <mat-option *ngFor="let option of config.form.musical_learning" [value]="option">{{option}}</mat-option>
+            <mat-option *ngFor="let option of config.form[currentLanguage()].musical_learning" [value]="option">{{option}}</mat-option>
         </mat-select>
         <mat-icon matSuffix>school</mat-icon>
     </mat-form-field>
@@ -50,7 +50,7 @@
         <mat-label>{{'FORM.INSTRUMENTS' | translate}}</mat-label>
         <input matInput type="text" autocomplete="nope" placeholder="violon, flute, ..." formControlName="instruments">
         <mat-icon matSuffix>piano</mat-icon>
-      </mat-form-field>
+    </mat-form-field>
 
     <mat-form-field appearance="fill" *ngIf="experience()">
         <mat-label>{{'FORM.PRACTICE' | translate}}</mat-label>

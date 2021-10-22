@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AppConfigService } from './services/app-config.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'musical-puzzle-angular';
 
   constructor(translate: TranslateService) {
-    translate.setDefaultLang('fr');
-    translate.use('fr');
+    translate.setDefaultLang(AppConfigService.settings.language.default_language);
+    translate.use(AppConfigService.settings.language.default_language);
   }
 }

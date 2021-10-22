@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AppConfigService } from '../services/app-config.service';
 import { IAppConfig } from '../models/app-config';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form',
@@ -16,7 +17,8 @@ export class FormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,10 @@ export class FormComponent implements OnInit {
       instruments: this.fb.control(''),
       practice: this.fb.control(''),
     })
+  }
+
+  currentLanguage(): string {
+    return this.translate.currentLang;
   }
 
   submit(): void {
@@ -50,7 +56,7 @@ export class FormComponent implements OnInit {
   }
 
   experience(): boolean {
-    return this.form.controls['experience']?.value !== '' && this.form.controls['experience']?.value !== this.config.form.musical_experience[0];
+    return this.form.controls['experience']?.value !== '' && this.form.controls['experience']?.value !== this.config.form[this.currentLanguage()].musical_experience[0];
   }
 
 }
