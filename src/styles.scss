@@ -79,3 +79,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         max-width: unset;
     }
 }
+
+.space mat-slider .mat-slider-wrapper {
+    top: 12px!important;
+}
