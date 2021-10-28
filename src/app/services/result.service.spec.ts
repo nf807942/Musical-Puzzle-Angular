@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SaveResultService } from './save-result.service';
+import { ResultService } from './result.service';
 
 describe('SaveResultService', () => {
-  let service: SaveResultService;
+  let service: ResultService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SaveResultService);
+    service = TestBed.inject(ResultService);
   });
 
   it('should be created', () => {

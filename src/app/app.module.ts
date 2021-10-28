@@ -23,6 +23,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 
 // Custom Components
 import { HomeComponent } from './home/home.component';
@@ -34,10 +36,14 @@ import { ToolbarComponent } from './commons/toolbar/toolbar.component';
 import { FormComponent } from './form/form.component';
 import { DifficultyComponent } from './difficulty/difficulty.component';
 import { ResultDialogComponent } from './commons/dialogs/result-dialog/result-dialog.component';
+import { AdminComponent } from './admin/base/admin.component';
+import { AdminResultsComponent } from './admin/admin-results/admin-results.component';
+import { AdminTracksComponent } from './admin/admin-tracks/admin-tracks.component';
+import { AdminConfigComponent } from './admin/admin-config/admin-config.component';
 
 // Custom Services
 import { AppConfigService } from './services/app-config.service';
-import { SaveResultService } from './services/save-result.service';
+import { ResultService } from './services/result.service';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
@@ -60,7 +66,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     ToolbarComponent,
     FormComponent,
     DifficultyComponent,
-    ResultDialogComponent
+    ResultDialogComponent,
+    AdminComponent,
+    AdminResultsComponent,
+    AdminTracksComponent,
+    AdminConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +95,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSliderModule,
     MatMenuModule,
     MatProgressBarModule,
+    MatTabsModule,
+    MatTableModule,
 
     // Traduction Module
     TranslateModule.forRoot({
@@ -97,7 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    SaveResultService,
+    ResultService,
     AppConfigService,
     {
       provide: APP_INITIALIZER,

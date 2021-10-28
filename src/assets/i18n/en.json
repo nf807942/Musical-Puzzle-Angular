@@ -15,6 +15,7 @@
         "DEVELOPMENT": "Development",
         "VERSION": "Version",
 
+        "DOWNLOAD": "Download as CSV",
         "YES": "Yes",
         "VALIDATE": "Validate",
         "BACK": "Go back",
@@ -57,6 +58,18 @@
         "TIME": "Time",
         "MS": "milliseconds",
         "CHANGE_DIFFICULTY": "Change difficulty"
-   
+    },
+    "ADMIN": {
+        "RESULTS": {
+            "TITLE": "Results",
+            "IDENTITY_HEADER": "Identity",
+            "DIFFICULTY_HEADER": "Difficulty of the experiment",
+            "SCORE_HEADER": "Result",
+
+            "EMAIL": "Email",
+            "AGE": "Age"
+        },
+        "TRACKS": "Tracks",
+        "CONFIG": "Configuration"
     }
 }

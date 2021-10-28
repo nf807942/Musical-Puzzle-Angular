@@ -8,7 +8,7 @@ import { ResultDialogComponent, ResultDialogOutputData } from '../commons/dialog
 import { Router } from '@angular/router';
 import { AudioPuzzleManager, PlayingMode } from '../models/audio-puzzle-manager';
 import { Puzzle } from '../models/puzzle';
-import { SaveResultService } from '../services/save-result.service';
+import { ResultService } from '../services/result.service';
 import { Result } from '../models/result';
 
 @Component({
@@ -43,7 +43,7 @@ export class PlayComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private location: Location,
     private router: Router,
-    private saveResultService: SaveResultService) { 
+    private resultService: ResultService) { 
 
       this.state = this.location.getState();
       
@@ -111,7 +111,7 @@ export class PlayComponent implements OnInit, OnDestroy {
     let post_data: Result = {...this.state, result};
 
     if(!this.state.training) {
-      this.saveResultService.post('save_result', post_data).subscribe((result) => console.log(result));
+      this.resultService.save_result(post_data).subscribe((result) => console.log(result));
     }
 
     const dialogRef = this.dialog.open(ResultDialogComponent, 

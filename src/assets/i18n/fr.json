@@ -15,6 +15,7 @@
         "DEVELOPMENT": "Réalisation",
         "VERSION": "Version",
 
+        "DOWNLOAD": "Télécharger le CSV",
         "YES": "Oui",
         "VALIDATE": "Valider",
         "BACK": "Retour",
@@ -57,5 +58,33 @@
         "TIME": "Temps",
         "MS": "millisecondes",
         "CHANGE_DIFFICULTY": "Changer la difficulté"
+    },
+    "ADMIN": {
+       "RESULTS": {
+           "TITLE": "Résultats",
+            "IDENTITY_HEADER": "Identité",
+            "DIFFICULTY_HEADER": "Difficulté de l'experience",
+            "SCORE_HEADER": "Résultat",
+
+            "EMAIL": "Email",
+            "AGE": "Âge",
+            "STATUS": "Statut",
+            "EXPERIENCE": "Experience",
+            "LEARNING": "Apprentissage",
+            "INSTRUMENTS": "Instruments",
+            "PRACTICE": "Pratique",
+            "NB_PIECES": "Nombre de pièces",
+            "NB_INSTRUMENTS": "Nombre d'instruments",
+            "AVAILABLE_SOLUTION": "Solution disponible",
+            "PIECES_SLIDER": "Barre individuelle",
+            "DATE": "Date/Heure",
+            "AUDIO": "Fichier audio",
+            "SCORE": "Bonnes réponses",
+            "TIME": "Temps (ms)" ,
+            "ORDER_INIT": "Ordre initial",
+            "ORDER_RESPONSE": "Ordre réponse"
+       },
+       "TRACKS": "Pistes audio",
+       "CONFIG": "Configuration"
     }
 }

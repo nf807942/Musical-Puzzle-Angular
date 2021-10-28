@@ -1,0 +1,25 @@
+<mat-tab-group mat-stretch-tabs>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">table_view</mat-icon>
+            {{'ADMIN.RESULTS.TITLE' | translate}}
+        </ng-template>
+        <app-admin-results></app-admin-results>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">queue_music</mat-icon>
+            {{'ADMIN.TRACKS' | translate}}
+        </ng-template>
+        <app-admin-tracks></app-admin-tracks>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">settings</mat-icon>
+            {{'ADMIN.CONFIG' | translate}}
+        </ng-template>
+        <app-admin-config></app-admin-config>
+    </mat-tab>
+  </mat-tab-group>
