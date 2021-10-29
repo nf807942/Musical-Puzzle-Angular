@@ -26,7 +26,7 @@ export class ResultDialogComponent implements OnInit {
   resultDialogData = ResultDialogOutputData;
 
   constructor(
-    public dialogRef: MatDialogRef<ResultDialogComponent>,
+    private dialogRef: MatDialogRef<ResultDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ResultDialogInputData) {
   }
 

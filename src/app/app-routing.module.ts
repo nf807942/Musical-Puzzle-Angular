@@ -7,6 +7,7 @@ import { FormComponent } from './form/form.component';
 import { HomeComponent } from './home/home.component';
 import { PlayComponent } from './play/play.component';
 import { PrincipeComponent } from './principe/principe.component';
+import { AuthenticatedGuard } from './services/authenticated.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'play', component: PlayComponent },
   { path: 'training', component: PlayComponent},
-  { path: 'admin', component: AdminComponent},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthenticatedGuard]},
   { path: '**', redirectTo: ''},
 ];
 

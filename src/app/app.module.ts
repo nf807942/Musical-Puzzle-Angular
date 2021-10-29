@@ -25,6 +25,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressBarModule} from '@angular/material/progress-bar'
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 // Custom Components
 import { HomeComponent } from './home/home.component';
@@ -44,6 +45,8 @@ import { AdminConfigComponent } from './admin/admin-config/admin-config.componen
 // Custom Services
 import { AppConfigService } from './services/app-config.service';
 import { ResultService } from './services/result.service';
+import { PasswordDialogComponent } from './commons/dialogs/password-dialog/password-dialog.component';
+import { MessageSnackbarComponent } from './commons/snackbars/message-snackbar/message-snackbar.component';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
@@ -70,7 +73,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminComponent,
     AdminResultsComponent,
     AdminTracksComponent,
-    AdminConfigComponent
+    AdminConfigComponent,
+    PasswordDialogComponent,
+    MessageSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +102,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatProgressBarModule,
     MatTabsModule,
     MatTableModule,
+    MatSnackBarModule,
 
     // Traduction Module
     TranslateModule.forRoot({

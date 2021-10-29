@@ -14,13 +14,21 @@
         "CGU": "Terms of use",
         "DEVELOPMENT": "Development",
         "VERSION": "Version",
-
         "DOWNLOAD": "Download as CSV",
+
+        "CANCEL": "Cancel",
         "YES": "Yes",
         "VALIDATE": "Validate",
         "BACK": "Go back",
         "QUIT": "Quit",
-        "RETRY": "Retry"
+        "RETRY": "Retry",
+
+        "CONNECTION": "Connect to administration section",
+        "LOGIN": "Connection",
+        "PASSWORD": "Password",
+        "LOGIN_ERROR": "Error while login : check the password",
+        "LOGIN_SUCCESS": "You are now connected",
+        "LOGOUT": "Logout successfull"
     },
     "DEVELOPMENT": {
         "LINE1": "Web application developed by Nicolas Forgeron as part of his PFE.",

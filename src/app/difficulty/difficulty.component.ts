@@ -25,7 +25,7 @@ export class DifficultyComponent implements OnInit {
     this.state = location.getState();
 
     if(!this.state.form) {
-      this.router.navigate(["/"]);
+      this.router.navigate(['/']);
     }
    }
 

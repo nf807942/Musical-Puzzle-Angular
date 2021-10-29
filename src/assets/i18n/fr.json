@@ -14,13 +14,21 @@
         "CGU": "Conditions d'utilisation",
         "DEVELOPMENT": "Réalisation",
         "VERSION": "Version",
-
         "DOWNLOAD": "Télécharger le CSV",
+
+        "CANCEL": "Annuler",
         "YES": "Oui",
         "VALIDATE": "Valider",
         "BACK": "Retour",
         "QUIT": "Quitter",
-        "RETRY": "Réesayer"
+        "RETRY": "Réesayer",
+
+        "CONNECTION": "Connexion à la section administration",
+        "LOGIN": "Connexion",
+        "PASSWORD": "Mot de passe",
+        "LOGIN_ERROR": "Erreur lors de la connexion : vérifiez le mot de passe",
+        "LOGIN_SUCCESS": "Vous êtes désormais connecté",
+        "LOGOUT": "Déconnexion reussie"
     },
     "DEVELOPMENT": {
         "LINE1": "Application web réalisée par Nicolas Forgeron dans le cadre de son PFE.",

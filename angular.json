@@ -26,7 +26,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/.htaccess",
-              "src/api"
+              "src/api",
+              "src/tools/password_generator.sh"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",

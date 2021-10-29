@@ -48,7 +48,7 @@ export class PlayComponent implements OnInit, OnDestroy {
       this.state = this.location.getState();
       
       if(!this.state.training && (!this.state.form || !this.state.difficulty)) {
-        this.router.navigate(["/"]);
+        this.router.navigate(['/']);
       }
 
       if(this.state.difficulty) {
