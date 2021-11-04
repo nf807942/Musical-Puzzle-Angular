@@ -33,7 +33,7 @@
 
     <div class="radio-group">
         <label>{{'FORM.NB_PIECES' | translate}} : </label>
-        <mat-icon class="clickable" (click)="add(config.difficulty.available_instruments)">add</mat-icon>
+        <mat-icon class="clickable" (click)="add(config.difficulty.available_pieces)">add</mat-icon>
         <mat-radio-group formControlName="default_pieces">
             <ng-container *ngFor="let option of config.difficulty.available_pieces">
                 <mat-radio-button [value]="option">{{option}}</mat-radio-button>
@@ -57,7 +57,7 @@
     </div>
 
     <div class="padding-top" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary" class="button-back-bottom">
+        <button mat-raised-button color="primary" class="button-back-bottom" [disabled]="!form.valid" (click)="updateConfig()">
             <mat-icon>done</mat-icon>
             {{'APP.VALIDATE' | translate}}
         </button>

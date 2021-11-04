@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { IAppConfig } from '../models/app-config';
 
 @Injectable({
@@ -21,4 +24,13 @@ export class AppConfigService {
             });
         });
     }
+
+    save(config: IAppConfig): Observable<Boolean> {
+      return this.http.post(`${environment.url}/save_config.php`, config).pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+    }
+  
 }

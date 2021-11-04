@@ -17,7 +17,8 @@ export class AdminConfigComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private configService: AppConfigService
   ) { }
 
   ngOnInit(): void {
@@ -38,10 +39,22 @@ export class AdminConfigComponent implements OnInit {
     });
   }
 
+  updateConfig(): void {
+    Object.assign(this.config.difficulty, this.form.value);
+
+    this.configService.save(this.config).subscribe((result) => console.log(result));
+  }
+
   remove(list: number[], option: number): void {
     const index = list.indexOf(option, 0);
     if (index > -1) {
       list.splice(index, 1);
+    }
+    if (this.form.get('default_instruments').value === option) {
+      this.form.get('default_instruments').setValue(undefined);
+    }
+    if (this.form.get('default_pieces').value === option) {
+      this.form.get('default_pieces').setValue(undefined);
     }
   }
 

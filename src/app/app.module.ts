@@ -41,13 +41,13 @@ import { AdminComponent } from './admin/base/admin.component';
 import { AdminResultsComponent } from './admin/admin-results/admin-results.component';
 import { AdminTracksComponent } from './admin/admin-tracks/admin-tracks.component';
 import { AdminConfigComponent } from './admin/admin-config/admin-config.component';
+import { NumberDialogComponent } from './commons/dialogs/number-dialog/number-dialog.component';
 
 // Custom Services
 import { AppConfigService } from './services/app-config.service';
 import { ResultService } from './services/result.service';
 import { PasswordDialogComponent } from './commons/dialogs/password-dialog/password-dialog.component';
 import { MessageSnackbarComponent } from './commons/snackbars/message-snackbar/message-snackbar.component';
-import { NumberDialogComponent } from './commons/dialogs/number-dialog/number-dialog.component';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
