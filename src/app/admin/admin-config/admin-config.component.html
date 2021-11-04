@@ -3,7 +3,7 @@
     <div class="radio-group">
         <label>{{'ADMIN.CONFIG.ASK_FOR_DIFFICULTY' | translate}} : </label>
         <div>
-            <mat-checkbox formControlName="ask_for_difficulty">{{'APP.YES' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="ask_for_difficulty">{{form.get('ask_for_difficulty').value ? ('APP.YES' | translate) : ('APP.NO' | translate)}}</mat-checkbox>
         </div>
     </div>
 
@@ -45,14 +45,14 @@
     <div class="radio-group">
         <label>{{'FORM.SOLUTION_AVAILABLE' | translate}} : </label>
         <div>
-            <mat-checkbox formControlName="default_available_solution">{{'APP.YES' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="default_available_solution">{{form.get('default_available_solution').value ? ('APP.YES' | translate) : ('APP.NO' | translate)}}</mat-checkbox>
         </div>
     </div>
 
     <div class="radio-group">
         <label>{{'FORM.PIECES_SLIDER' | translate}} : </label>
         <div>
-            <mat-checkbox formControlName="default_pieces_slider">{{'APP.YES' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="default_pieces_slider">{{form.get('default_pieces_slider').value ? ('APP.YES' | translate) : ('APP.NO' | translate)}}</mat-checkbox>
         </div>
     </div>
 

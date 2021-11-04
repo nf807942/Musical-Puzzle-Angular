@@ -23,14 +23,14 @@
     <div class="radio-group" *ngIf="config.difficulty.ask_for_available_solution">
         <label>{{'FORM.SOLUTION_AVAILABLE' | translate}} : </label>
         <div>
-            <mat-checkbox formControlName="available_solution">{{'APP.YES' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="available_solution">{{form.get('available_solution').value ? ('APP.YES' | translate) : ('APP.NO' | translate)}}</mat-checkbox>
         </div>
     </div>
 
     <div class="radio-group" *ngIf="config.difficulty.ask_for_pieces_slider">
         <label>{{'FORM.PIECES_SLIDER' | translate}} : </label>
         <div>
-            <mat-checkbox formControlName="pieces_slider">{{'APP.YES' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="pieces_slider">{{form.get('pieces_slider').value ? ('APP.YES' | translate) : ('APP.NO' | translate)}}</mat-checkbox>
         </div>
     </div>
     
