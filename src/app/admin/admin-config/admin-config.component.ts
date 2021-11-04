@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NumberDialogComponent } from 'src/app/commons/dialogs/number-dialog/number-dialog.component';
 import { IAppConfig } from 'src/app/models/app-config';
 import { AppConfigService } from 'src/app/services/app-config.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-admin-config',
@@ -18,7 +19,8 @@ export class AdminConfigComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private configService: AppConfigService
+    private configService: AppConfigService,
+    private snackbarServce: SnackbarService
   ) { }
 
   ngOnInit(): void {
@@ -42,7 +44,13 @@ export class AdminConfigComponent implements OnInit {
   updateConfig(): void {
     Object.assign(this.config.difficulty, this.form.value);
 
-    this.configService.save(this.config).subscribe((result) => console.log(result));
+    this.configService.save(this.config).subscribe((result) => {
+      if (result) {
+        this.snackbarServce.success(3, 'APP.UPDATE_SUCCESS');
+      } else {
+        this.snackbarServce.error(3, 'APP.UPDATE_ERROR');
+      }
+    });
   }
 
   remove(list: number[], option: number): void {

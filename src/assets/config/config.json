@@ -12,14 +12,18 @@
         "ask_for_pieces": true,
         "ask_for_available_solution": true,
         "ask_for_pieces_slider": true,
-
-        "default_instruments": 1,
-        "default_pieces": 5,
+        "default_instruments": 2,
+        "default_pieces": 10,
         "default_available_solution": true,
         "default_pieces_slider": true,
-
-        "available_instruments": [1, 2],
-        "available_pieces": [5, 10]
+        "available_instruments": [
+            1,
+            2
+        ],
+        "available_pieces": [
+            5,
+            10
+        ]
     },
     "form": {
         "fr": {
@@ -64,11 +68,11 @@
     "tracks": [
         {
             "rows": 1,
-            "filename" : "satisfaction.mp3"
+            "filename": "satisfaction.mp3"
         },
         {
             "rows": 2,
-            "filename" : "satisfaction.mp3"
+            "filename": "satisfaction.mp3"
         }
     ]
 }

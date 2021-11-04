@@ -25,6 +25,8 @@
         "BACK": "Go back",
         "QUIT": "Quit",
         "RETRY": "Retry",
+        "UPDATE_SUCCESS": "Update successful",
+        "UPDATE_ERROR": "Error while updating",
 
         "CONNECTION": "Connect to administration section",
         "LOGIN": "Connection",

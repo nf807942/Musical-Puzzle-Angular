@@ -25,6 +25,8 @@
         "BACK": "Retour",
         "QUIT": "Quitter",
         "RETRY": "Réesayer",
+        "UPDATE_SUCCESS": "Mise à jour réussie",
+        "UPDATE_ERROR": "Echec de la mise à jour",
 
         "CONNECTION": "Connexion à la section administration",
         "LOGIN": "Connexion",

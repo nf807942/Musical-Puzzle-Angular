@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfigService } from 'src/app/services/app-config.service';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { PasswordDialogComponent } from '../dialogs/password-dialog/password-dialog.component';
 import { MessageSnackbarComponent } from '../snackbars/message-snackbar/message-snackbar.component';
 
@@ -23,7 +24,7 @@ export class ToolbarComponent implements OnInit {
     private dialog: MatDialog,
     public connectionService: ConnectionService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBarService: SnackbarService,
   ) {
     this.currentLanguage = translate.currentLang;
     this.languageList = AppConfigService.settings.language.available_languages;
@@ -48,23 +49,11 @@ export class ToolbarComponent implements OnInit {
       if(result !== null) {
         this.connectionService.connection(result).subscribe(result => {
           if (result) {
-            this.snackBar.openFromComponent(MessageSnackbarComponent, {
-              duration: 3 * 1000,
-              data: {
-                icon: 'check',
-                message: 'APP.LOGIN_SUCCESS'
-              }
-            });
+            this.snackBarService.success(3, 'APP.LOGIN_SUCCESS');
             this.router.navigate(['/admin']);
           }
           else {
-            this.snackBar.openFromComponent(MessageSnackbarComponent, {
-              duration: 3 * 1000,
-              data: {
-                icon: 'error_outline',
-                message: 'APP.LOGIN_ERROR'
-              }
-            });
+            this.snackBarService.error(3, 'APP.LOGIN_ERROR');
           }
         });
       }
@@ -74,13 +63,7 @@ export class ToolbarComponent implements OnInit {
   disconnect(): void {
     this.connectionService.disconnection();
 
-    this.snackBar.openFromComponent(MessageSnackbarComponent, {
-      duration: 3 * 1000,
-      data: {
-        icon: 'check',
-        message: 'APP.LOGOUT'
-      }
-    });
+    this.snackBarService.success(3, 'APP.LOGOUT');
 
     this.router.navigate(['/']);
   }
