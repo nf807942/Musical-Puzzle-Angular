@@ -7,9 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  links = ['./admin', './', '/Third', '/admin', '/play'];
-  activeLink = this.links[0];
-
   constructor() { }
 
   ngOnInit(): void {

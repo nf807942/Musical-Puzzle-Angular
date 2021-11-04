@@ -15,9 +15,12 @@
         "DEVELOPMENT": "Development",
         "VERSION": "Version",
         "DOWNLOAD": "Download as CSV",
+        "NUMBER": "Number",
+        "ADD_VALUE": "Add a value",
 
         "CANCEL": "Cancel",
         "YES": "Yes",
+        "NO": "No",
         "VALIDATE": "Validate",
         "BACK": "Go back",
         "QUIT": "Quit",
@@ -78,6 +81,11 @@
             "AGE": "Age"
         },
         "TRACKS": "Tracks",
-        "CONFIG": "Configuration"
+        "CONFIG": {
+            "TITLE": "Configuration",
+            "ASK_FOR_DIFFICULTY": "Ask for difficulty settings to the subject",
+            "ASK_FOR_SECTION": "Available settings",
+            "DEFAULT_VALUES": "Default values"
+        }
     }
 }

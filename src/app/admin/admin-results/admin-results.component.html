@@ -1,4 +1,4 @@
-
+<div class="padding-top padding-bottom">
     <table mat-table [dataSource]="results | async" class="mat-elevation-z8">
 
         <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
@@ -26,11 +26,11 @@
 
     </table>
 
-<div class="padding-top" fxLayout="row" fxLayoutAlign="center center">
-    <a [href]="resultService.download_link()">
-        <button mat-raised-button><mat-icon>download</mat-icon>{{'APP.DOWNLOAD' | translate}}</button>
-    </a>
+    <div class="padding-top" fxLayout="row" fxLayoutAlign="center center">
+        <a [href]="resultService.download_link()">
+            <button mat-raised-button><mat-icon>download</mat-icon>{{'APP.DOWNLOAD' | translate}}</button>
+        </a>
+    </div>
 </div>
-
 
 

@@ -16,7 +16,7 @@
         <mat-icon matSuffix>cake</mat-icon>
         <mat-error *ngIf="form.controls['age'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
         <mat-error *ngIf="form.controls['age'].errors?.min || form.controls['age'].errors?.max">{{'FORM.INVALID' | translate}}</mat-error>
-      </mat-form-field>
+    </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>{{'FORM.STATUS' | translate}}</mat-label>

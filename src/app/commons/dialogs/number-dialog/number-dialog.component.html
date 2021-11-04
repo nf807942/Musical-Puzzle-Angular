@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{'APP.ADD_VALUE' | translate}}</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" (keyup.enter)="close()">
+        <mat-form-field appearance="fill">
+            <mat-label>{{'APP.NUMBER' | translate}}</mat-label>
+            <input cdkFocusInitial matInput type="number" formControlName="number" required>
+        </mat-form-field>
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="null"><mat-icon>close</mat-icon>{{'APP.CANCEL' | translate}}</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="form.value.number" [disabled]="!form.valid"><mat-icon>done</mat-icon>{{'APP.VALIDATE' | translate}}</button>
+</mat-dialog-actions>

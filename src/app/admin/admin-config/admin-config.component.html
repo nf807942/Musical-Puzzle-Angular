@@ -1,1 +1,66 @@
-<p>admin-config works!</p>
+<div class="padding-top padding-bottom" [formGroup]="form">
+
+    <div class="radio-group">
+        <label>{{'ADMIN.CONFIG.ASK_FOR_DIFFICULTY' | translate}} : </label>
+        <div>
+            <mat-checkbox formControlName="ask_for_difficulty">{{'APP.YES' | translate}}</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="radio-group" *ngIf="form.get('ask_for_difficulty').value">
+        <label>{{'ADMIN.CONFIG.ASK_FOR_SECTION' | translate}} : </label>
+        <div>
+            <mat-checkbox formControlName="ask_for_instruments">{{'FORM.NB_INSTRUMENTS' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="ask_for_pieces">{{'FORM.NB_PIECES' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="ask_for_available_solution">{{'FORM.SOLUTION_AVAILABLE' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="ask_for_pieces_slider">{{'FORM.PIECES_SLIDER' | translate}}</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="separator-row form-margin"></div>
+    <div class="title-small"><span>{{'ADMIN.CONFIG.DEFAULT_VALUES' | translate}}</span></div>
+
+    <div class="radio-group">
+        <label>{{'FORM.NB_INSTRUMENTS' | translate}} : </label>
+        <mat-icon class="clickable" (click)="add(config.difficulty.available_instruments)">add</mat-icon>
+        <mat-radio-group formControlName="default_instruments">
+            <ng-container *ngFor="let option of config.difficulty.available_instruments">
+                <mat-radio-button [value]="option">{{option}}</mat-radio-button>
+                <mat-icon class="clickable" (click)="remove(config.difficulty.available_instruments, option)">clear</mat-icon>
+            </ng-container>
+        </mat-radio-group>
+    </div>
+
+    <div class="radio-group">
+        <label>{{'FORM.NB_PIECES' | translate}} : </label>
+        <mat-icon class="clickable" (click)="add(config.difficulty.available_instruments)">add</mat-icon>
+        <mat-radio-group formControlName="default_pieces">
+            <ng-container *ngFor="let option of config.difficulty.available_pieces">
+                <mat-radio-button [value]="option">{{option}}</mat-radio-button>
+                <mat-icon class="clickable" (click)="remove(config.difficulty.available_pieces, option)">clear</mat-icon>
+            </ng-container>
+        </mat-radio-group>
+    </div>
+
+    <div class="radio-group">
+        <label>{{'FORM.SOLUTION_AVAILABLE' | translate}} : </label>
+        <div>
+            <mat-checkbox formControlName="default_available_solution">{{'APP.YES' | translate}}</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="radio-group">
+        <label>{{'FORM.PIECES_SLIDER' | translate}} : </label>
+        <div>
+            <mat-checkbox formControlName="default_pieces_slider">{{'APP.YES' | translate}}</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="padding-top" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" class="button-back-bottom">
+            <mat-icon>done</mat-icon>
+            {{'APP.VALIDATE' | translate}}
+        </button>
+    </div>
+
+</div>

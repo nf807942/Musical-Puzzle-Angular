@@ -5,6 +5,9 @@ export interface IAppConfig {
     }
     difficulty: {
         ask_for_difficulty: boolean;
+
+        ask_for_instruments: boolean;
+        ask_for_pieces: boolean;
         ask_for_available_solution: boolean;
         ask_for_pieces_slider: boolean;
 

@@ -1,4 +1,4 @@
-<mat-tab-group mat-stretch-tabs>
+<mat-tab-group mat-stretch-tabs selectedIndex="2">
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon class="tab-icon">table_view</mat-icon>
@@ -15,10 +15,10 @@
         <app-admin-tracks></app-admin-tracks>
     </mat-tab>
 
-    <mat-tab>
+    <mat-tab >
         <ng-template mat-tab-label>
             <mat-icon class="tab-icon">settings</mat-icon>
-            {{'ADMIN.CONFIG' | translate}}
+            {{'ADMIN.CONFIG.TITLE' | translate}}
         </ng-template>
         <app-admin-config></app-admin-config>
     </mat-tab>

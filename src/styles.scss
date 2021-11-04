@@ -3,6 +3,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+mat-icon {
+    vertical-align: middle;
+}
+
 .logo-toolbar {
     height: inherit;
 }
@@ -17,6 +21,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .padding-top {
     padding-top: 1em;
+}
+
+.padding-bottom {
+    padding-bottom: 1em;
+}
+
+.form-margin {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.form-padding {
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .neutral-link {
@@ -35,6 +53,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .title {
     text-align: center;
     font-size: 32px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.title-small {
+    text-align: center;
+    font-size: 24px;
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -62,6 +87,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .button-back-bottom {
     width: 50%;
     max-width: 300px;
+}
+
+.radio-group {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 1em;
+
+    mat-radio-group, div {
+        margin-left: 1em;
+        padding-top: 1em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2em;
+    }
+}
+
+.separator-row {
+    border-top: #ccc 1vh double;
+    margin: 1em 1em 0 0;
 }
 
 @media (max-width: 800px) {

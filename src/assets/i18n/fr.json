@@ -15,9 +15,12 @@
         "DEVELOPMENT": "Réalisation",
         "VERSION": "Version",
         "DOWNLOAD": "Télécharger le CSV",
+        "NUMBER": "Nombre",
+        "ADD_VALUE": "Rajouter une valeur",
 
         "CANCEL": "Annuler",
         "YES": "Oui",
+        "NO": "Non",
         "VALIDATE": "Valider",
         "BACK": "Retour",
         "QUIT": "Quitter",
@@ -69,7 +72,7 @@
     },
     "ADMIN": {
        "RESULTS": {
-           "TITLE": "Résultats",
+            "TITLE": "Résultats",
             "IDENTITY_HEADER": "Identité",
             "DIFFICULTY_HEADER": "Difficulté de l'experience",
             "SCORE_HEADER": "Résultat",
@@ -93,6 +96,11 @@
             "ORDER_RESPONSE": "Ordre réponse"
        },
        "TRACKS": "Pistes audio",
-       "CONFIG": "Configuration"
+       "CONFIG": {
+           "TITLE": "Configuration",
+           "ASK_FOR_DIFFICULTY": "Paramétrage de la difficulté par le sujet",
+           "ASK_FOR_SECTION": "Paramètres disponibles",
+           "DEFAULT_VALUES": "Valeurs par défaut"
+       }
     }
 }

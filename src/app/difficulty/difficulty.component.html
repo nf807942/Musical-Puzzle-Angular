@@ -2,16 +2,16 @@
 
     <div class="title"><span>{{'FORM.DIFFICULTY' | translate}}</span></div>
 
-    <div class="radio-group">
+    <div class="radio-group" *ngIf="config.difficulty.ask_for_instruments">
         <label>{{'FORM.NB_INSTRUMENTS' | translate}} : </label>
         <mat-radio-group formControlName="nb_instruments">
             <ng-container *ngFor="let option of config.difficulty.available_instruments">
                 <mat-radio-button [value]="option">{{option}}</mat-radio-button>
             </ng-container>
         </mat-radio-group>
-      </div>
+    </div>
 
-    <div class="radio-group">
+    <div class="radio-group" *ngIf="config.difficulty.ask_for_pieces">
         <label>{{'FORM.NB_PIECES' | translate}} : </label>
         <mat-radio-group formControlName="nb_pieces">
             <ng-container *ngFor="let option of config.difficulty.available_pieces">

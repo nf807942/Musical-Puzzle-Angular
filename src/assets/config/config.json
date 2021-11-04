@@ -8,6 +8,8 @@
     },
     "difficulty": {
         "ask_for_difficulty": true,
+        "ask_for_instruments": true,
+        "ask_for_pieces": true,
         "ask_for_available_solution": true,
         "ask_for_pieces_slider": true,
 
