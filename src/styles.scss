@@ -27,6 +27,14 @@ mat-icon {
     padding-bottom: 1em;
 }
 
+.margin-top {
+    margin-top: 1em;
+}
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
 .form-margin {
     margin-left: 10%;
     margin-right: 10%;
@@ -68,6 +76,12 @@ mat-icon {
     width: 80%;
     padding-left: 10%;
     padding-right: 10%;
+}
+
+.full-input {
+    width: 100%;
+    padding-left: unset;
+    padding-right: unset;
 }
 
 .buttons-group-back-next {

@@ -17,6 +17,8 @@
         "DOWNLOAD": "Download as CSV",
         "NUMBER": "Number",
         "ADD_VALUE": "Add a value",
+        "NO_FILE": "No file",
+        "FILE": "File",
 
         "CANCEL": "Cancel",
         "YES": "Yes",
@@ -82,7 +84,13 @@
             "EMAIL": "Email",
             "AGE": "Age"
         },
-        "TRACKS": "Tracks",
+        "TRACKS": {
+            "TITLE": "Tracks",
+            "ADD_TRACK": "Add a track",
+            "NAME": "Track name",
+            "SELECT_FILES": "Select the audio file(s)",
+            "UNIQUE": "Should be unique for a given number of instrument"
+        },
         "CONFIG": {
             "TITLE": "Configuration",
             "ASK_FOR_DIFFICULTY": "Ask for difficulty settings to the subject",

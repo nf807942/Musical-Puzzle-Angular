@@ -68,11 +68,14 @@
     "tracks": [
         {
             "rows": 1,
-            "filename": "satisfaction.mp3"
+            "filename": "satisfaction.mp3",
+            "enabled": true
         },
         {
             "rows": 2,
-            "filename": "satisfaction.mp3"
+            "filename": "satisfaction.mp3",
+            "enabled": true
         }
-    ]
+    ],
+    "training_track": "satisfaction.mp3"
 }

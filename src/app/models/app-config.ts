@@ -29,5 +29,7 @@ export interface IAppConfig {
     tracks: {
         rows: number;
         filename: string;
+        enabled: boolean;
     } [];
+    training_track : string;
 }

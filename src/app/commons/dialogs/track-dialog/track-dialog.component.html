@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{'ADMIN.TRACKS.ADD_TRACK' | translate}}</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill" class="full-input">
+            <mat-label>{{'ADMIN.TRACKS.NAME' | translate}}</mat-label>
+            <input cdkFocusInitial matInput formControlName="name" required>
+            <mat-hint>{{'ADMIN.TRACKS.UNIQUE' | translate}}</mat-hint>
+            <mat-error *ngIf="form.controls['name'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
+        </mat-form-field>
+
+        <input type="file" class="file-input" (change)="selectFiles($event)" #fileUpload multiple accept=".mp3">
+
+        <div fxLayout="row" fxLayoutAlign="center center" class="margin-top">
+            <button mat-raised-button color="primary" (click)="fileUpload.click()">
+                <mat-icon>upload</mat-icon>{{'ADMIN.TRACKS.SELECT_FILES' | translate}}
+            </button>
+        </div>
+        <div class="margin-top" *ngIf="list.length === 0"><span >{{"APP.NO_FILE" | translate}}</span></div>
+        <ul>
+            <li *ngFor="let file of list">
+                {{file.name}}<mat-icon class="clickable" (click)="removeFile(file)">clear</mat-icon>
+            </li>
+        </ul>
+        <span *ngIf="list.length !== 0">{{list.length}} {{"APP.FILE" | translate}}{{list.length > 1 ? 's' : ''}}</span>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="null"><mat-icon>close</mat-icon>{{'APP.CANCEL' | translate}}</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="{name: form.value.name, list}" [disabled]="!form.valid || list.length === 0"><mat-icon>done</mat-icon>{{'APP.VALIDATE' | translate}}</button>
+</mat-dialog-actions>

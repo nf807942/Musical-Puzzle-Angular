@@ -17,6 +17,8 @@
         "DOWNLOAD": "Télécharger le CSV",
         "NUMBER": "Nombre",
         "ADD_VALUE": "Rajouter une valeur",
+        "NO_FILE": "Aucun fichier",
+        "FILE": "Fichier",
 
         "CANCEL": "Annuler",
         "YES": "Oui",
@@ -97,7 +99,13 @@
             "ORDER_INIT": "Ordre initial",
             "ORDER_RESPONSE": "Ordre réponse"
        },
-       "TRACKS": "Pistes audio",
+       "TRACKS": {
+            "TITLE": "Pistes audio",
+            "ADD_TRACK": "Ajouter une piste",
+            "NAME": "Nom de la piste",
+            "SELECT_FILES": "Sélectionner le(s) fichier(s) audio",
+            "UNIQUE": "Doit être unique pour un même nombre d'instrument"
+        },
        "CONFIG": {
            "TITLE": "Configuration",
            "ASK_FOR_DIFFICULTY": "Paramétrage de la difficulté par le sujet",
