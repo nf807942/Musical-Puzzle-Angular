@@ -29,6 +29,7 @@
         "RETRY": "Retry",
         "UPDATE_SUCCESS": "Update successful",
         "UPDATE_ERROR": "Error while updating",
+        "DELETE": "Delete",
 
         "CONNECTION": "Connect to administration section",
         "LOGIN": "Connection",
@@ -72,7 +73,8 @@
         "TOTAL": "Total",
         "TIME": "Time",
         "MS": "milliseconds",
-        "CHANGE_DIFFICULTY": "Change difficulty"
+        "CHANGE_DIFFICULTY": "Change difficulty",
+        "NO_TRACK": "No available track found"
     },
     "ADMIN": {
         "RESULTS": {
@@ -89,7 +91,18 @@
             "ADD_TRACK": "Add a track",
             "NAME": "Track name",
             "SELECT_FILES": "Select the audio file(s)",
-            "UNIQUE": "Should be unique for a given number of instrument"
+            "UNIQUE": "Should be unique for a given number of instrument",
+
+            "ENABLED": "Available in experiments",
+            "TRAINING": "Available in trainings",
+            "ROWS": "Number of instruments",
+            "TRACKNAME": "Trackname",
+            "ACTIONS": "Actions",
+
+            "DELETE": {
+                "TITLE": "Track deletion",
+                "MESSAGE": "Are you sure to delte this track ?"
+            }
         },
         "CONFIG": {
             "TITLE": "Configuration",

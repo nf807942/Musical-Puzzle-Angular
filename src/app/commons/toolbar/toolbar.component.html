@@ -17,7 +17,7 @@
     </ng-container>
     <button mat-button routerLink="/about"><mat-icon>help_outline</mat-icon></button>
     <button *ngIf="!connectionService.Authenticated" mat-button (click)="openPasswordDialog()"><mat-icon>login</mat-icon></button>
-    <button *ngIf="connectionService.Authenticated" routerLink="/admin" mat-button><mat-icon>admin_panel_settings</mat-icon></button>
+    <button *ngIf="connectionService.Authenticated" routerLink="/admin" mat-button><mat-icon>manage_accounts</mat-icon></button>
     <button *ngIf="connectionService.Authenticated" mat-button (click)="disconnect()"><mat-icon>logout</mat-icon></button>
 
   </mat-toolbar>

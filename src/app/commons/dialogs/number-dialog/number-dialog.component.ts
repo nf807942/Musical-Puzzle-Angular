@@ -10,8 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class NumberDialogComponent implements OnInit {
 
   form: FormGroup;
-  hide: boolean = true;
-
+  
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NumberDialogComponent>,

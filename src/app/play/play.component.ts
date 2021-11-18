@@ -10,6 +10,7 @@ import { AudioPuzzleManager, PlayingMode } from '../models/audio-puzzle-manager'
 import { Puzzle } from '../models/puzzle';
 import { ResultService } from '../services/result.service';
 import { Result } from '../models/result';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-play',
@@ -43,25 +44,38 @@ export class PlayComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private location: Location,
     private router: Router,
-    private resultService: ResultService) { 
+    private resultService: ResultService,
+    private snackbarService: SnackbarService,
+    ) { 
 
       this.state = this.location.getState();
       
-      if(!this.state.training && (!this.state.form || !this.state.difficulty)) {
+      if(!this.state.training && (!this.state.form)) {
         this.router.navigate(['/']);
       }
 
-      if(this.state.difficulty) {
-        this.nb_instruments = this.state.difficulty.nb_instruments;
-        this.nb_pieces = this.state.difficulty.nb_pieces;
-        this.available_solution = this.state.difficulty.available_solution;
-        this.pieces_slider = this.state.difficulty.pieces_slider;
+      if(!this.state.difficulty) {
+        this.state.difficulty = {};
+        this.state.difficulty.nb_instruments = AppConfigService.settings.difficulty.default_instruments;
+        this.state.difficulty.nb_pieces = AppConfigService.settings.difficulty.default_pieces;
+        this.state.difficulty.available_solution = AppConfigService.settings.difficulty.default_available_solution;
+        this.state.difficulty.pieces_slider = AppConfigService.settings.difficulty.default_pieces_slider;
       }
+
+      this.nb_instruments = this.state.difficulty.nb_instruments;
+      this.nb_pieces = this.state.difficulty.nb_pieces;
+      this.available_solution = this.state.difficulty.available_solution;
+      this.pieces_slider = this.state.difficulty.pieces_slider;
   }
 
   ngOnInit(): void {
     this.puzzle = new Puzzle(this.nb_pieces, this.nb_instruments)
-    this.audio_manager = new AudioPuzzleManager(this.puzzle);
+    this.audio_manager = new AudioPuzzleManager(this.puzzle, this.state.training);
+
+    if(!this.audio_manager.valid) {
+      this.snackbarService.error(3, 'PUZZLE.NO_TRACK');
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnDestroy(): void {
@@ -122,7 +136,7 @@ export class PlayComponent implements OnInit, OnDestroy {
           pieces: this.nb_pieces,
           success_by_row: this.puzzle.correctsPiecesByRow(),
           success_total: this.puzzle.correctsPieces(),
-          can_change_difficulty: !this.state.training
+          can_change_difficulty: !this.state.training && AppConfigService.settings.difficulty.ask_for_difficulty
         }
       });
 

@@ -35,6 +35,14 @@ mat-icon {
     margin-bottom: 1em;
 }
 
+.margin-left {
+    margin-left: 1em;
+}
+
+.margin-right {
+    margin-right: 1em;
+}
+
 .form-margin {
     margin-left: 10%;
     margin-right: 10%;
@@ -148,5 +156,5 @@ mat-icon {
 }
 
 .error-snackbar {
-    background-color: firebrick;
+    background-color: #f44336;
 }

@@ -9,7 +9,7 @@
         "PLAY": "Jouer",
         "HOW": "Comment jouer ?",
         "TRAINING": "Entrainement",
-        "ABOUT": "À propos / Contact",
+        "ABOUT": "À propos",
         "CONTACT": "Contact",
         "CGU": "Conditions d'utilisation",
         "DEVELOPMENT": "Réalisation",
@@ -29,6 +29,7 @@
         "RETRY": "Réesayer",
         "UPDATE_SUCCESS": "Mise à jour réussie",
         "UPDATE_ERROR": "Echec de la mise à jour",
+        "DELETE": "Supprimer",
 
         "CONNECTION": "Connexion à la section administration",
         "LOGIN": "Connexion",
@@ -72,7 +73,8 @@
         "TOTAL": "Total",
         "TIME": "Temps",
         "MS": "millisecondes",
-        "CHANGE_DIFFICULTY": "Changer la difficulté"
+        "CHANGE_DIFFICULTY": "Changer la difficulté",
+        "NO_TRACK": "Aucune piste audio disponible trouvée"
     },
     "ADMIN": {
        "RESULTS": {
@@ -104,7 +106,18 @@
             "ADD_TRACK": "Ajouter une piste",
             "NAME": "Nom de la piste",
             "SELECT_FILES": "Sélectionner le(s) fichier(s) audio",
-            "UNIQUE": "Doit être unique pour un même nombre d'instrument"
+            "UNIQUE": "Doit être unique pour un même nombre d'instrument",
+
+            "ENABLED": "Disponible en experiences",
+            "TRAINING": "Disponible en entrainements",
+            "ROWS": "Nombre d'instruments",
+            "TRACKNAME": "Nom de la piste",
+            "ACTIONS": "Actions",
+
+            "DELETE": {
+                "TITLE": "Supprimer une piste",
+                "MESSAGE": "Êtes-vous sur de vouloir supprimer cette piste ?"
+            }
         },
        "CONFIG": {
            "TITLE": "Configuration",

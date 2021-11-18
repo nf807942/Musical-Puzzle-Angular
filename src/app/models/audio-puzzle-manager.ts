@@ -11,10 +11,12 @@ export enum PlayingMode {
 
 export class AudioPuzzleManager {
 
-  audio: HTMLAudioElement[];
+  audio: HTMLAudioElement[] = [];
   audio_name = "";
   puzzle: Puzzle;
   duration: number;
+  training: boolean;
+  valid: boolean;
 
   mode: PlayingMode = PlayingMode.empty;
 
@@ -23,15 +25,24 @@ export class AudioPuzzleManager {
   last_position_piece: number = 0;
   current_piece: Piece = null;
   
-  constructor(puzzle_: Puzzle) {
+  constructor(puzzle_: Puzzle, _training: boolean) {
     this.puzzle = puzzle_;
+    this.training = _training;
 
-    this.loadTracks();
+    this.valid = this.loadTracks();
   }
 
-  loadTracks() {
-    const tracks_with_correct_rows = AppConfigService.settings.tracks.filter(track => track.rows === this.puzzle.nb_instruments);
-    const chosen_track_name = tracks_with_correct_rows[Math.floor(Math.random() * tracks_with_correct_rows.length)].filename;
+  loadTracks(): boolean {
+    const tracks_with_correct_rows = AppConfigService.settings.tracks.filter(track => 
+      track.rows === this.puzzle.nb_instruments && 
+      this.training ? track.training : track.enabled
+    );
+
+    if(tracks_with_correct_rows.length == 0) {
+      return false;
+    }
+
+    const chosen_track_name = tracks_with_correct_rows[Math.floor(Math.random() * tracks_with_correct_rows.length)].trackname;
 
     this.audio_name = chosen_track_name;
 
@@ -101,6 +112,8 @@ export class AudioPuzzleManager {
         }
       }
     }
+
+    return true;
   }
 
   stopAll(): void {

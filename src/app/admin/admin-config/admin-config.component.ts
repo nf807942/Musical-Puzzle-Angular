@@ -20,12 +20,12 @@ export class AdminConfigComponent implements OnInit {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private configService: AppConfigService,
-    private snackbarServce: SnackbarService
+    private snackbarService: SnackbarService
   ) { }
 
   ngOnInit(): void {
 
-    this.config = AppConfigService.settings;
+    this.config = JSON.parse(JSON.stringify(AppConfigService.settings));
 
     this.form = this.fb.group({
       ask_for_difficulty: this.fb.control(this.config.difficulty.ask_for_difficulty, {validators:[Validators.required]}),
@@ -46,10 +46,13 @@ export class AdminConfigComponent implements OnInit {
 
     this.configService.save(this.config).subscribe((result) => {
       if (result) {
-        this.snackbarServce.success(3, 'APP.UPDATE_SUCCESS');
+        this.snackbarService.success(3, 'APP.UPDATE_SUCCESS');
+        AppConfigService.settings = this.config;
       } else {
-        this.snackbarServce.error(3, 'APP.UPDATE_ERROR');
+        this.snackbarService.error(3, 'APP.UPDATE_ERROR');
       }
+    }, () => {
+      this.snackbarService.error(3, 'APP.UPDATE_ERROR');
     });
   }
 

@@ -7,13 +7,13 @@
         "default_language": "fr"
     },
     "difficulty": {
-        "ask_for_difficulty": true,
+        "ask_for_difficulty": false,
         "ask_for_instruments": true,
         "ask_for_pieces": true,
         "ask_for_available_solution": true,
         "ask_for_pieces_slider": true,
-        "default_instruments": 2,
-        "default_pieces": 10,
+        "default_instruments": 1,
+        "default_pieces": 5,
         "default_available_solution": true,
         "default_pieces_slider": true,
         "available_instruments": [
@@ -68,14 +68,15 @@
     "tracks": [
         {
             "rows": 1,
-            "filename": "satisfaction.mp3",
-            "enabled": true
+            "trackname": "satisfaction.mp3",
+            "enabled": true,
+            "training": true
         },
         {
             "rows": 2,
-            "filename": "satisfaction.mp3",
-            "enabled": true
+            "trackname": "satisfaction.mp3",
+            "enabled": false,
+            "training": false
         }
-    ],
-    "training_track": "satisfaction.mp3"
+    ]
 }

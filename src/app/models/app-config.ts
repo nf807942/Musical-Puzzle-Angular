@@ -1,3 +1,5 @@
+import { Track } from "./track";
+
 export interface IAppConfig {
     language: {
         available_languages: string[];
@@ -26,10 +28,5 @@ export interface IAppConfig {
             musical_learning: string[];
         }
     },
-    tracks: {
-        rows: number;
-        filename: string;
-        enabled: boolean;
-    } [];
-    training_track : string;
+    tracks: Track[];
 }
