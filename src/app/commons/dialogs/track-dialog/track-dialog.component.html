@@ -9,7 +9,7 @@
             <mat-error *ngIf="form.controls['name'].errors?.required">{{'FORM.REQUIRED' | translate}}</mat-error>
         </mat-form-field>
 
-        <input type="file" class="file-input" (change)="selectFiles($event)" #fileUpload multiple accept=".mp3">
+        <input type="file" class="file-input" formControlName="files" (change)="selectFiles($event)" #fileUpload multiple accept=".mp3">
 
         <div fxLayout="row" fxLayoutAlign="center center" class="margin-top">
             <button mat-raised-button color="primary" (click)="fileUpload.click()">
@@ -28,5 +28,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-raised-button [mat-dialog-close]="null"><mat-icon>close</mat-icon>{{'APP.CANCEL' | translate}}</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="{name: form.value.name, list}" [disabled]="!form.valid || list.length === 0"><mat-icon>done</mat-icon>{{'APP.VALIDATE' | translate}}</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="{list: list, name: form.value.name}" [disabled]="!form.valid || list.length === 0"><mat-icon>done</mat-icon>{{'APP.VALIDATE' | translate}}</button>
 </mat-dialog-actions>

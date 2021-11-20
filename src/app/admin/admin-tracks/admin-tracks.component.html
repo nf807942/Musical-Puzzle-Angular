@@ -42,9 +42,9 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <button mat-raised-button color="primary" (click)="addTrack()"><mat-icon>add</mat-icon>{{"ADMIN.TRACKS.ADD_TRACK" | translate}}</button>
+    <button mat-raised-button color="primary" class="button-back-bottom no-width" (click)="addTrack()"><mat-icon>add</mat-icon>{{"ADMIN.TRACKS.ADD_TRACK" | translate}}</button>
 
     <div class="padding-top" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary" (click)="update()"><mat-icon>done</mat-icon>{{'APP.VALIDATE' | translate}}</button>
+        <button mat-raised-button color="primary" (click)="update()" class="button-back-bottom"><mat-icon>done</mat-icon>{{'APP.VALIDATE' | translate}}</button>
     </div>
 </div>

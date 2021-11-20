@@ -35,7 +35,7 @@ export class AudioPuzzleManager {
   loadTracks(): boolean {
     const tracks_with_correct_rows = AppConfigService.settings.tracks.filter(track => 
       track.rows === this.puzzle.nb_instruments && 
-      this.training ? track.training : track.enabled
+      (this.training ? track.training : track.enabled)
     );
 
     if(tracks_with_correct_rows.length == 0) {
@@ -43,7 +43,6 @@ export class AudioPuzzleManager {
     }
 
     const chosen_track_name = tracks_with_correct_rows[Math.floor(Math.random() * tracks_with_correct_rows.length)].trackname;
-
     this.audio_name = chosen_track_name;
 
     this.audio = [];

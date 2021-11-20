@@ -26,8 +26,8 @@
     </table>
 
     <div class="padding-top" fxLayout="row" fxLayoutAlign="center center">
-        <a [href]="resultService.download_link()">
-            <button mat-raised-button><mat-icon>download</mat-icon>{{'APP.DOWNLOAD' | translate}}</button>
+        <a color="primary" [href]="resultService.download_link()" mat-raised-button class="button-back-bottom">
+            <mat-icon>download</mat-icon>{{'APP.DOWNLOAD' | translate}}
         </a>
     </div>
 </div>

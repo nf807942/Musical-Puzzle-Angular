@@ -22,10 +22,10 @@
     $filename = $path . $i . '_' . $track->trackname;
     if (file_exists($filename)) {
       // deleting the file
-      unlink($filename);
-    } else {
-      echo json_encode(false);
-      return;
+      if(!unlink($filename)) {
+        echo json_encode(false);
+        return;
+      }
     }
   }
 

@@ -24,4 +24,4 @@ Il faut ensuite placer ce dossier dans `nforgeron/public_html` pour le déployer
 
 Vérifier qu'il y a les droit d'écriture sur `musical-puzzle-angular` (sinon `ssh i3m-lead-0243.u-bourgogne.fr -l nforgeron` puis `chmod -c -R 777 musical-puzzle-angular`).
 
-Paramétrer le mot de passe avec `sh public_html/musical-puzzle-angular/tools/password_generator`.
+Paramétrer le mot de passe avec `sh password_generator.sh` dans `tools`.

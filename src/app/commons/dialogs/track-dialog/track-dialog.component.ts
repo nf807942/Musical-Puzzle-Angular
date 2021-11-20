@@ -22,6 +22,7 @@ export class TrackDialogComponent implements OnInit {
 
     this.form = this.fb.group({
       name: this.fb.control('', {validators:[Validators.required]}),
+      files: this.fb.control('', {validators:[Validators.required]}),
     })
   }
 
@@ -33,12 +34,6 @@ export class TrackDialogComponent implements OnInit {
     const index = this.list.indexOf(file, 0);
     if (index > -1) {
       this.list.splice(index, 1);
-    }
-  }
-
-  close() {
-    if (this.form.valid) {
-      this.dialogRef.close(this.form.value.number);
     }
   }
 

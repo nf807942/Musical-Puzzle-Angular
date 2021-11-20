@@ -22,4 +22,17 @@ export class TracksService {
     );
   }
 
+  add_track(form: any): Observable<boolean> {
+    const formData = new FormData();
+    for (var i = 0; i < form.list.length; i++) {
+      formData.append("file[]", form.list[i]);
+    }
+    formData.append("name", form.name + '.mp3');
+
+    return this.http.post(`${environment.url}/add_track.php`, formData).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }

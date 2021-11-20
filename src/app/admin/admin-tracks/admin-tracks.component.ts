@@ -49,10 +49,30 @@ export class AdminTracksComponent implements OnInit {
 
   addTrack(): void {
     const dialogRef = this.dialog.open(TrackDialogComponent, 
-      {
-        disableClose: true,
-        minWidth: '500px'
-      });
+    {
+      disableClose: true,
+      minWidth: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe((form) => {
+      if(form !== null) {
+        this.trackService.add_track(form).subscribe(result => {
+          // si réussite ajout dans le fichier de config
+          if(result) {
+            this.config.tracks.push({rows: form.list.length, trackname: form.name + '.mp3', enabled: false, training: false});
+            this.update();
+            this.table.renderRows();
+          } else {
+            this.snackbarService.error(3, 'APP.UPDATE_ERROR');
+          }
+        },
+        () => {
+          this.snackbarService.error(3, 'APP.UPDATE_ERROR');
+        });
+      }
+    });
+  }
+
   removeTrack(track: Track): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, 
     {
