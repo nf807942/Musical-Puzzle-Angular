@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{data.title | translate}}</h2>
+<mat-dialog-content>
+    {{data.message | translate}}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="false">
+      <mat-icon>{{data.no_icon}}</mat-icon>{{data.no_message | translate}}
+    </button>
+  <button mat-raised-button [color]="data.yes_color" [mat-dialog-close]="true">
+      <mat-icon>{{data.yes_icon}}</mat-icon>{{data.yes_message | translate}}
+    </button>
+</mat-dialog-actions>

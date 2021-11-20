@@ -49,6 +49,7 @@ import { ResultService } from './services/result.service';
 import { PasswordDialogComponent } from './commons/dialogs/password-dialog/password-dialog.component';
 import { MessageSnackbarComponent } from './commons/snackbars/message-snackbar/message-snackbar.component';
 import { TrackDialogComponent } from './commons/dialogs/track-dialog/track-dialog.component';
+import { ConfirmDialogComponent } from './commons/dialogs/confirm-dialog/confirm-dialog.component';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
@@ -79,7 +80,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PasswordDialogComponent,
     MessageSnackbarComponent,
     NumberDialogComponent,
-    TrackDialogComponent
+    TrackDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
