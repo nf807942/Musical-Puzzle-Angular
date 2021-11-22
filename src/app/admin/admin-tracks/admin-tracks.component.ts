@@ -42,25 +42,21 @@ export class AdminTracksComponent implements OnInit, OnDestroy {
     this.config = JSON.parse(JSON.stringify(AppConfigService.settings));
 
     for (let track of this.config.tracks) {
-      let index = this.audio.push([]) - 1;
-      for (let i = 0; i < track.rows; i++) {
-        let subtrack = new Audio();
-        subtrack.src = 'assets/audio/tracks/' + track.rows + '/' + (i+1) + '_' + track.trackname;
-        this.audio[index].push(subtrack);
-
-        subtrack.onended = () => {
-          this.playing_index = null;
-        }
-      }
+      this.pushAudio(track.rows, track.trackname);
     }
   }
 
   ngOnDestroy(): void {
-    for(let track of this.audio) {
-      for(let subtrack of track) {
+    this.stopAll();
+  }
+
+  stopAll(): void {
+    for (let track of this.audio) {
+      for (let subtrack of track) {
         subtrack.pause();
       }
     }
+    this.playing_index = null;
   }
 
   play(track: Track): void {
@@ -106,6 +102,9 @@ export class AdminTracksComponent implements OnInit, OnDestroy {
             this.config.tracks.push({rows: form.list.length, trackname: form.name + '.mp3', enabled: false, training: false});
             this.update();
             this.table.renderRows();
+
+            this.pushAudio(form.list.length, form.name + '.mp3');
+
           } else {
             this.snackbarService.error(3, 'APP.UPDATE_ERROR');
           }
@@ -143,6 +142,8 @@ export class AdminTracksComponent implements OnInit, OnDestroy {
             }
             this.update();
             this.table.renderRows();
+
+            this.stopAll();
           } else {
             this.snackbarService.error(3, 'APP.UPDATE_ERROR');
           }
@@ -162,6 +163,19 @@ export class AdminTracksComponent implements OnInit, OnDestroy {
         this.config = JSON.parse(JSON.stringify(AppConfigService.settings));
       }
     });
+  }
+
+  pushAudio(rows: number, name: string): void {
+    let index = this.audio.push([]) - 1;
+    for (let i = 0; i < rows; i++) {
+      let subtrack = new Audio();
+      subtrack.src = 'assets/audio/tracks/' + rows + '/' + (i+1) + '_' + name;
+      this.audio[index].push(subtrack);
+
+      subtrack.onended = () => {
+        this.playing_index = null;
+      }
+    }
   }
 
 }

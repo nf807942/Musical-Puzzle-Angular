@@ -7,8 +7,8 @@
 	$f = fopen($filename, 'r');
 
 	if ($f === false) {
-		http_response_code(500);
-		die('Cannot open the file ' . $filename);
+		echo json_encode(['data'=> $data]);
+		return;
 	}
 
 	// read each line in CSV file at a time
