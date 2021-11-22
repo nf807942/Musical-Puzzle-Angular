@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Track } from '../models/track';
 
@@ -18,7 +18,7 @@ export class TracksService {
     return this.http.post(`${environment.url}/delete_track.php`, track).pipe(
       map((res: any) => {
         return res;
-      })
+      }), catchError(() => of(false))
     );
   }
 
@@ -32,7 +32,7 @@ export class TracksService {
     return this.http.post(`${environment.url}/add_track.php`, formData).pipe(
       map((res: any) => {
         return res;
-      })
+      }), catchError(() => of(false))
     );
   }
 }

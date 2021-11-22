@@ -30,4 +30,12 @@ export class SnackbarService {
   error(duration: number, message: string): void {
     this.open(duration, 'error_outline', message, 'error-snackbar');
   }
+
+  loading(): void {
+    this.open(0, null, 'APP.LOADING', null)
+  }
+
+  dismiss(): void {
+    this.snackBar.dismiss();
+  }
 }

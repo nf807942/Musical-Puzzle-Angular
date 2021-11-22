@@ -43,6 +43,7 @@ export class AdminConfigComponent implements OnInit {
 
   updateConfig(): void {
     Object.assign(this.config.difficulty, this.form.value);
+    this.snackbarService.loading();
 
     this.configService.save(this.config).subscribe((result) => {
       if (result) {
@@ -51,8 +52,6 @@ export class AdminConfigComponent implements OnInit {
       } else {
         this.snackbarService.error(3, 'APP.UPDATE_ERROR');
       }
-    }, () => {
-      this.snackbarService.error(3, 'APP.UPDATE_ERROR');
     });
   }
 

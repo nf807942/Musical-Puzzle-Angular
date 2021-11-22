@@ -30,6 +30,9 @@
         "UPDATE_SUCCESS": "Mise à jour réussie",
         "UPDATE_ERROR": "Echec de la mise à jour",
         "DELETE": "Supprimer",
+        "LOADING": "Chargement ...",
+        "SAVE_CHANGES" : "Sauvegarder les changements",
+        "ERROR_LOADING_RESULTS": "Echec de la récupération des résultats",
 
         "CONNECTION": "Connexion à la section administration",
         "LOGIN": "Connexion",

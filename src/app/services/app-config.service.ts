@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IAppConfig } from '../models/app-config';
 
@@ -29,7 +29,7 @@ export class AppConfigService {
       return this.http.post(`${environment.url}/save_config.php`, config).pipe(
         map((res: any) => {
           return res;
-        })
+        }), catchError(() => of(false))
       );
     }
   

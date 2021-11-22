@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfigService } from 'src/app/services/app-config.service';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { PasswordDialogComponent } from '../dialogs/password-dialog/password-dialog.component';
-import { MessageSnackbarComponent } from '../snackbars/message-snackbar/message-snackbar.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -45,9 +43,10 @@ export class ToolbarComponent implements OnInit {
         minWidth: '400px'
       });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if(result !== null) {
-        this.connectionService.connection(result).subscribe(result => {
+    dialogRef.afterClosed().subscribe((password) => {
+      if(password !== null) {
+        this.snackBarService.loading();
+        this.connectionService.connection(password).subscribe(result => {
           if (result) {
             this.snackBarService.success(3, 'APP.LOGIN_SUCCESS');
             this.router.navigate(['/admin']);

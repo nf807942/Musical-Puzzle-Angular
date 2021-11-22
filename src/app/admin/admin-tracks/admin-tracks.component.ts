@@ -56,6 +56,7 @@ export class AdminTracksComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((form) => {
       if(form !== null) {
+        this.snackbarService.loading();
         this.trackService.add_track(form).subscribe(result => {
           // si réussite ajout dans le fichier de config
           if(result) {
@@ -65,9 +66,6 @@ export class AdminTracksComponent implements OnInit {
           } else {
             this.snackbarService.error(3, 'APP.UPDATE_ERROR');
           }
-        },
-        () => {
-          this.snackbarService.error(3, 'APP.UPDATE_ERROR');
         });
       }
     });
@@ -91,6 +89,7 @@ export class AdminTracksComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if(result !== null && result) {
+        this.snackbarService.loading();
         // supprimer les fichiers
         this.trackService.delete_track(track).subscribe(result => {
           // si réussite suppression dans le fichier de config
@@ -104,15 +103,13 @@ export class AdminTracksComponent implements OnInit {
           } else {
             this.snackbarService.error(3, 'APP.UPDATE_ERROR');
           }
-        },
-        () => {
-          this.snackbarService.error(3, 'APP.UPDATE_ERROR');
         });
       }
     });
   }
 
   update(): void {
+    this.snackbarService.loading();
     this.configService.save(this.config).subscribe((result) => {
       if (result) {
         this.snackbarService.success(3, 'APP.UPDATE_SUCCESS');
@@ -121,9 +118,6 @@ export class AdminTracksComponent implements OnInit {
         this.snackbarService.error(3, 'APP.UPDATE_ERROR');
         this.config = JSON.parse(JSON.stringify(AppConfigService.settings));
       }
-    }, () => {
-      this.snackbarService.error(3, 'APP.UPDATE_ERROR');
-      this.config = JSON.parse(JSON.stringify(AppConfigService.settings));
     });
   }
 

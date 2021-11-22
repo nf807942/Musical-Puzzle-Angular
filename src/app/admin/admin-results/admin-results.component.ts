@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { Result } from 'src/app/models/result';
 import { ResultService } from 'src/app/services/result.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-admin-results',
@@ -13,11 +15,19 @@ export class AdminResultsComponent implements OnInit {
   results: Observable<Result[]>;
 
   constructor(
-    public resultService: ResultService
+    public resultService: ResultService,
+    private snackbarService: SnackbarService
     ) { }
 
   ngOnInit(): void {
-    this.results = this.resultService.get_results();
+    this.snackbarService.loading();
+    this.results = this.resultService.get_results().pipe(
+      tap(() => this.snackbarService.dismiss()),
+      catchError((error) => {
+        this.snackbarService.error(3, 'APP.ERROR_LOADING_RESULTS');
+        return [];
+      })
+    );
   }
 
   displayedColumns: string[] = [

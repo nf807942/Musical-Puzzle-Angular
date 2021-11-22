@@ -30,6 +30,9 @@
         "UPDATE_SUCCESS": "Update successful",
         "UPDATE_ERROR": "Error while updating",
         "DELETE": "Delete",
+        "LOADING": "Loading ...",
+        "SAVE_CHANGES" : "Save changes",
+        "ERROR_LOADING_RESULTS": "Error while loading results",
 
         "CONNECTION": "Connect to administration section",
         "LOGIN": "Connection",
