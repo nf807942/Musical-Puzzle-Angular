@@ -1,8 +1,6 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { Observable } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/commons/dialogs/confirm-dialog/confirm-dialog.component';
 import { TrackDialogComponent } from 'src/app/commons/dialogs/track-dialog/track-dialog.component';
 import { IAppConfig } from 'src/app/models/app-config';
@@ -16,19 +14,22 @@ import { TracksService } from 'src/app/services/tracks.service';
   templateUrl: './admin-tracks.component.html',
   styleUrls: ['./admin-tracks.component.scss']
 })
-export class AdminTracksComponent implements OnInit {
+export class AdminTracksComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatTable) table: MatTable<Track>;
 
   config: IAppConfig;
-  tracks: Track[];
   displayedColumns: string[] = [
+    'play',
     'enabled',
     'training',
     'rows',
     'trackname',
     'actions',
   ];
+
+  audio: HTMLAudioElement[][] = [];
+  playing_index: number = null;
 
   constructor(
     private dialog: MatDialog,
@@ -39,6 +40,48 @@ export class AdminTracksComponent implements OnInit {
 
   ngOnInit(): void {
     this.config = JSON.parse(JSON.stringify(AppConfigService.settings));
+
+    for (let track of this.config.tracks) {
+      let index = this.audio.push([]) - 1;
+      for (let i = 0; i < track.rows; i++) {
+        let subtrack = new Audio();
+        subtrack.src = 'assets/audio/tracks/' + track.rows + '/' + (i+1) + '_' + track.trackname;
+        this.audio[index].push(subtrack);
+
+        subtrack.onended = () => {
+          this.playing_index = null;
+        }
+      }
+    }
+  }
+
+  ngOnDestroy(): void {
+    for(let track of this.audio) {
+      for(let subtrack of track) {
+        subtrack.pause();
+      }
+    }
+  }
+
+  play(track: Track): void {
+    if (this.playing_index !== null) {
+      for (let i = 0; i < this.config.tracks[this.playing_index].rows; i++) {
+        this.audio[this.playing_index][i].pause();
+      }
+    }
+    if (this.isPlaying(track)) {
+      this.playing_index = null;
+    } else {
+      this.playing_index = this.config.tracks.indexOf(track);
+      for (let i = 0; i < track.rows; i++) {
+        this.audio[this.playing_index][i].currentTime = 0;
+        this.audio[this.playing_index][i].play();
+      }
+    }
+  }
+
+  isPlaying(track: Track): boolean {
+    return this.config.tracks.indexOf(track) === this.playing_index;
   }
 
   formatTrackName(name: string): string {

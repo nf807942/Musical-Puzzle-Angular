@@ -51,6 +51,7 @@
             "ADD_TO_LIST": "Add to list",
             "PLAY": "Play",
             "PAUSE": "Pause",
+            "STOP": "Stop",
             "PASSWORD": "Hide/Show password"
         }
     },
@@ -109,6 +110,7 @@
             "SELECT_FILES": "Select the audio file(s)",
             "UNIQUE": "Should be unique for a given number of instrument",
 
+            "PLAY": "Play",
             "ENABLED": "Available in experiments",
             "TRAINING": "Available in trainings",
             "ROWS": "Number of instruments",

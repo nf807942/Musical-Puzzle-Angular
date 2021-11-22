@@ -51,6 +51,7 @@
             "ADD_TO_LIST": "Ajouter à la liste",
             "PLAY": "Lecture",
             "PAUSE": "Pause",
+            "STOP": "Stop",
             "PASSWORD": "Masquer/Montrer le mot de passe"
         }
     },
@@ -124,6 +125,7 @@
             "SELECT_FILES": "Sélectionner le(s) fichier(s) audio",
             "UNIQUE": "Doit être unique pour un même nombre d'instrument",
 
+            "PLAY": "Lecture",
             "ENABLED": "Disponible en experiences",
             "TRAINING": "Disponible en entrainements",
             "ROWS": "Nombre d'instruments",

@@ -49,7 +49,6 @@ export class AudioPuzzleManager {
     for (let i = 0; i < this.puzzle.nb_instruments; i++) {
       let track = new Audio();
       track.src = 'assets/audio/tracks/' + this.puzzle.nb_instruments + '/' + (i+1) + '_' + chosen_track_name;
-      track.load();  
       this.audio.push(track);
 
       track.onloadedmetadata = () => {

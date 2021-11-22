@@ -1,6 +1,19 @@
 <div class="padding-top padding-bottom margin-left margin-right">
     <table mat-table [dataSource]="config.tracks" class="mat-elevation-z8">
 
+        <ng-container matColumnDef="play">
+            <th mat-header-cell *matHeaderCellDef>{{'ADMIN.TRACKS.PLAY' | translate}}</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-mini-fab [matTooltip]="(!isPlaying(element) ? 'APP.TOOLTIPS.PLAY' : 'APP.TOOLTIPS.STOP') | translate"
+                [color]="!isPlaying(element) ? 'primary' : 'accent'"
+                (click)="play(element)"
+                >
+                    <mat-icon *ngIf="!isPlaying(element)">play_arrow</mat-icon>
+                    <mat-icon *ngIf="isPlaying(element)">stop</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
         <ng-container matColumnDef="enabled">
             <th mat-header-cell *matHeaderCellDef>{{'ADMIN.TRACKS.ENABLED' | translate}}</th>
             <td mat-cell *matCellDef="let element">
