@@ -101,7 +101,22 @@
             "SCORE_HEADER": "Result",
 
             "EMAIL": "Email",
-            "AGE": "Age"
+            "AGE": "Age",
+            "STATUS": "Status",
+            "EXPERIENCE": "Experience",
+            "LEARNING": "Learning",
+            "INSTRUMENTS": "Instruments",
+            "PRACTICE": "Practice",
+            "NB_PIECES": "Number of pieces",
+            "NB_INSTRUMENTS": "Number of instruments",
+            "AVAILABLE_SOLUTION": "Available solution",
+            "PIECES_SLIDER": "Individual slider",
+            "DATE": "Datetime",
+            "AUDIO": "Audio filename",
+            "SCORE": "Good answers",
+            "TIME": "Time (ms)" ,
+            "ORDER_INIT": "Initial order",
+            "ORDER_RESPONSE": "Response order"
         },
         "TRACKS": {
             "TITLE": "Tracks",
