@@ -36,7 +36,20 @@
         "PASSWORD": "Mot de passe",
         "LOGIN_ERROR": "Erreur lors de la connexion : vérifiez le mot de passe",
         "LOGIN_SUCCESS": "Vous êtes désormais connecté",
-        "LOGOUT": "Déconnexion reussie"
+        "LOGOUT": "Déconnexion reussie",
+
+        "TOOLTIPS": {
+            "CHANGE_LANGUAGE": "Changer la langue",
+            "HELP": "À propos / Contact",
+            "LOGIN": "Connexion admin",
+            "ADMINISTRATION": "Page d'administration",
+            "LOGOUT": "Déconnexion",
+            "REMOVE_FROM_LIST": "Retirer de la liste",
+            "ADD_TO_LIST": "Ajouter à la liste",
+            "PLAY": "Lecture",
+            "PAUSE": "Pause",
+            "PASSWORD": "Masquer/Montrer le mot de passe"
+        }
     },
     "DEVELOPMENT": {
         "LINE1": "Application web réalisée par Nicolas Forgeron dans le cadre de son PFE.",

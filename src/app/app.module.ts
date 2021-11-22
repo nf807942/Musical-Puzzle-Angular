@@ -26,6 +26,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipDefaultOptions, MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS} from '@angular/material/tooltip';
 
 // Custom Components
 import { HomeComponent } from './home/home.component';
@@ -42,14 +43,16 @@ import { AdminResultsComponent } from './admin/admin-results/admin-results.compo
 import { AdminTracksComponent } from './admin/admin-tracks/admin-tracks.component';
 import { AdminConfigComponent } from './admin/admin-config/admin-config.component';
 import { NumberDialogComponent } from './commons/dialogs/number-dialog/number-dialog.component';
-
-// Custom Services
-import { AppConfigService } from './services/app-config.service';
-import { ResultService } from './services/result.service';
 import { PasswordDialogComponent } from './commons/dialogs/password-dialog/password-dialog.component';
 import { MessageSnackbarComponent } from './commons/snackbars/message-snackbar/message-snackbar.component';
 import { TrackDialogComponent } from './commons/dialogs/track-dialog/track-dialog.component';
 import { ConfirmDialogComponent } from './commons/dialogs/confirm-dialog/confirm-dialog.component';
+
+// Custom Services
+import { AppConfigService } from './services/app-config.service';
+import { ResultService } from './services/result.service';
+import { SnackbarService } from './services/snackbar.service';
+import { TracksService } from './services/tracks.service';
 
 // Initialize the app by loading the config file
 export function initializeApp(appConfig: AppConfigService) {
@@ -60,6 +63,13 @@ export function initializeApp(appConfig: AppConfigService) {
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+// Delai par défaut pour les tooltips
+export const customTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 500,
+  hideDelay: 500,
+  touchendHideDelay: 500,
+};
 
 @NgModule({
   declarations: [
@@ -109,6 +119,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTabsModule,
     MatTableModule,
     MatSnackBarModule,
+    MatTooltipModule,
 
     // Traduction Module
     TranslateModule.forRoot({
@@ -122,12 +133,18 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ResultService,
+    SnackbarService,
+    TracksService,
     AppConfigService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [AppConfigService], 
       multi: true
+    },
+    {
+      provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
+      useValue: customTooltipDefaults
     }
   ],
   bootstrap: [AppComponent]

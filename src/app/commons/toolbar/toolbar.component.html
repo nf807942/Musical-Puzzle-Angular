@@ -5,7 +5,7 @@
     <span class="spacer"></span>
     <ng-container>
         <mat-icon>language</mat-icon>
-        <button mat-button [matMenuTriggerFor]="menuLanguage">
+        <button mat-button [matMenuTriggerFor]="menuLanguage" [matTooltip]="'APP.TOOLTIPS.CHANGE_LANGUAGE' | translate">
             {{'LANGUAGE.' + currentLanguage | uppercase | translate}}
             <mat-icon>arrow_drop_down</mat-icon>
         </button>
@@ -15,10 +15,10 @@
             </a>
         </mat-menu>
     </ng-container>
-    <button mat-button routerLink="/about"><mat-icon>help_outline</mat-icon></button>
-    <button *ngIf="!connectionService.Authenticated" mat-button (click)="openPasswordDialog()"><mat-icon>login</mat-icon></button>
-    <button *ngIf="connectionService.Authenticated" routerLink="/admin" mat-button><mat-icon>manage_accounts</mat-icon></button>
-    <button *ngIf="connectionService.Authenticated" mat-button (click)="disconnect()"><mat-icon>logout</mat-icon></button>
+    <button mat-button routerLink="/about" [matTooltip]="'APP.TOOLTIPS.HELP' | translate"><mat-icon>help_outline</mat-icon></button>
+    <button *ngIf="!connectionService.Authenticated" mat-button (click)="openPasswordDialog()" [matTooltip]="'APP.TOOLTIPS.LOGIN' | translate"><mat-icon>login</mat-icon></button>
+    <button *ngIf="connectionService.Authenticated" routerLink="/admin" mat-button [matTooltip]="'APP.TOOLTIPS.ADMINISTRATION' | translate"><mat-icon>manage_accounts</mat-icon></button>
+    <button *ngIf="connectionService.Authenticated" mat-button (click)="disconnect()" [matTooltip]="'APP.TOOLTIPS.LOGOUT' | translate"><mat-icon>logout</mat-icon></button>
 
   </mat-toolbar>
 

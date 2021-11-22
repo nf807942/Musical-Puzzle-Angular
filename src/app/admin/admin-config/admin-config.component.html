@@ -22,22 +22,22 @@
 
     <div class="radio-group">
         <label>{{'FORM.NB_INSTRUMENTS' | translate}} : </label>
-        <mat-icon class="clickable" (click)="add(config.difficulty.available_instruments)">add</mat-icon>
+        <mat-icon class="clickable" (click)="add(config.difficulty.available_instruments)" [matTooltip]="'APP.TOOLTIPS.ADD_TO_LIST' | translate">add</mat-icon>
         <mat-radio-group formControlName="default_instruments">
             <ng-container *ngFor="let option of config.difficulty.available_instruments">
                 <mat-radio-button [value]="option">{{option}}</mat-radio-button>
-                <mat-icon class="clickable" (click)="remove(config.difficulty.available_instruments, option)">clear</mat-icon>
+                <mat-icon class="clickable" (click)="remove(config.difficulty.available_instruments, option)" [matTooltip]="'APP.TOOLTIPS.REMOVE_FROM_LIST' | translate">clear</mat-icon>
             </ng-container>
         </mat-radio-group>
     </div>
 
     <div class="radio-group">
         <label>{{'FORM.NB_PIECES' | translate}} : </label>
-        <mat-icon class="clickable" (click)="add(config.difficulty.available_pieces)">add</mat-icon>
+        <mat-icon class="clickable" (click)="add(config.difficulty.available_pieces)" [matTooltip]="'APP.TOOLTIPS.ADD_TO_LIST' | translate">add</mat-icon>
         <mat-radio-group formControlName="default_pieces">
             <ng-container *ngFor="let option of config.difficulty.available_pieces">
                 <mat-radio-button [value]="option">{{option}}</mat-radio-button>
-                <mat-icon class="clickable" (click)="remove(config.difficulty.available_pieces, option)">clear</mat-icon>
+                <mat-icon class="clickable" (click)="remove(config.difficulty.available_pieces, option)" [matTooltip]="'APP.TOOLTIPS.REMOVE_FROM_LIST' | translate">clear</mat-icon>
             </ng-container>
         </mat-radio-group>
     </div>

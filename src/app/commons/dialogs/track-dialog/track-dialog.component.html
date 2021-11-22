@@ -19,7 +19,7 @@
         <div class="margin-top" *ngIf="list.length === 0"><span >{{"APP.NO_FILE" | translate}}</span></div>
         <ul>
             <li *ngFor="let file of list">
-                {{file.name}}<mat-icon class="clickable" (click)="removeFile(file)">clear</mat-icon>
+                {{file.name}}<mat-icon class="clickable" (click)="removeFile(file)" [matTooltip]="'APP.TOOLTIPS.REMOVE_FROM_LIST' | translate">clear</mat-icon>
             </li>
         </ul>
         <span *ngIf="list.length !== 0">{{list.length}} {{"APP.FILE" | translate}}{{list.length > 1 ? 's' : ''}}</span>

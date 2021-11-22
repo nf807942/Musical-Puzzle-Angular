@@ -1,7 +1,7 @@
 <div class="puzzle" cdkDropListGroup>
     
     <div class="slider-container" *ngIf="available_solution">
-        <button mat-mini-fab 
+        <button mat-mini-fab [matTooltip]="(audio_manager.mode != modes.solution ? 'APP.TOOLTIPS.PLAY' : 'APP.TOOLTIPS.PAUSE') | translate"
         [color]="audio_manager.mode != modes.solution ? 'primary' : 'accent'" 
         (click)="audio_manager.switch_solution(); startTimer()"
         >
@@ -45,6 +45,7 @@
                             <div class="piece-index">{{getIndex(piece)}}</div>
                             <mat-icon class="piece-move">open_with</mat-icon>
                             <button class="piece-button" mat-mini-fab
+                            [matTooltip]="((audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece) ? 'APP.TOOLTIPS.PLAY' : 'APP.TOOLTIPS.PAUSE') | translate"
                             [color]="audio_manager.mode !== modes.piece || audio_manager.current_piece !== piece ? 'primary' : 'accent'"
                             (click)="audio_manager.switch_piece(piece); startTimer()"
                             >

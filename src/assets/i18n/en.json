@@ -36,7 +36,20 @@
         "PASSWORD": "Password",
         "LOGIN_ERROR": "Error while login : check the password",
         "LOGIN_SUCCESS": "You are now connected",
-        "LOGOUT": "Logout successfull"
+        "LOGOUT": "Logout successfull",
+
+        "TOOLTIPS": {
+            "CHANGE_LANGUAGE": "Change language",
+            "HELP": "About / Contact",
+            "LOGIN": "Login as admin",
+            "ADMINISTRATION": "Administration page",
+            "LOGOUT": "Logout",
+            "REMOVE_FROM_LIST": "Remove from list",
+            "ADD_TO_LIST": "Add to list",
+            "PLAY": "Play",
+            "PAUSE": "Pause",
+            "PASSWORD": "Hide/Show password"
+        }
     },
     "DEVELOPMENT": {
         "LINE1": "Web application developed by Nicolas Forgeron as part of his PFE.",
